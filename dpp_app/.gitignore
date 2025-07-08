@@ -1,0 +1,7 @@
+__pycache__/
+
+#do not commit any image in results folder
+results/denoise_test/*.tif
+results/*.pt
+.DS_Store
+.vscode/*

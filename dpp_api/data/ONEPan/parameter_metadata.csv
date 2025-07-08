@@ -1,0 +1,31 @@
+﻿Parameter,Public
+DPP Created Timestamp,0
+Product ID,0
+Manufacturing date,1
+Manufactured by.Name,1
+Manufacturing place.City,1
+Manufacturing place.Address,1
+Product category,1
+Original weight,1
+Height,1
+Width,1
+Depth,1
+Date of registration on the website,1
+CO2 footprint manufacturing (production to gate),1
+CO2 footprint refurbishment (recoating),1
+CO2 end-of-life (recycling),1
+Upgradeability,1
+Recycled content,1
+Recycled content [share - wt%],1
+Contactdetails,1
+HazardousSubstances,1
+Min allowed weight,0
+Refurbish Site,0
+Economic operator,0
+DPP Update Timestamp,0
+DPP Update Reason,0
+"Shipping/logistics LCA current client 1,2,3,4,5,6,7",0
+streeAddress,0
+addressRegion,0
+addressCountry,0
+Number of circulations,0

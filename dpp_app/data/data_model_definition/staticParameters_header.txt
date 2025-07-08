@@ -1,0 +1,11 @@
+{
+"@context":{
+"schema": "https://schema.org",
+"xsd": "http://www.w3.org/2001/XMLSchema#",
+"gs1":"https://gs1.org/voc/",
+"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+}
+,
+"@type" : "gs1:Offer",
+"itemOffered": {}
+}

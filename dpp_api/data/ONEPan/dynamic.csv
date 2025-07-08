@@ -1,0 +1,4 @@
+Product ID,Update ID,DPP Update Timestamp,DPP Update Reason,DPP Update Responsible,Actual weight,CO2 footprint n cycles of recoating,Number of recoating/circulations,CO2 saving after n cycles of recoating,Geography (location of owner/user),Historic
+1,1.1,2025-05-20 14:54:19,Test historic,ONEPan,0.0,0.0,0.0,0.0,-,0.0
+1,1.2000000000000002,2025-05-20 14:55:34,Recoating test,ONEPan,30.0,10.0,2.0,23.0,-,0.0
+1,1.1,2025-05-20 16:26:34,-,ONEPan,0.0,0.0,0.0,0.0,-,1.0
