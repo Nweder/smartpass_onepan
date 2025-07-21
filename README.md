@@ -106,7 +106,7 @@ This feature allows authorized users to manage product updates in `Private Mode`
 
 ### How to Add or Edit an Update
 
-Navigate to Product Updates `(9. Products Updates)`.
+Navigate to Product Updates `(9. Product Updates)`.
 
 1.  **Authentication**: Ensure you are logged in to the application to enable `Private Mode`.
     * To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
