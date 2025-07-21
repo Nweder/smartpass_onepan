@@ -119,12 +119,12 @@ This section explains how to modify and extend the DPP application's parameters 
 ### Introduction
 
 * **Purpose**: The configuration file controls the display names, categories, and layout of parameters within the `DPP_APP`.
-* **Location**: You can find the configuration file at `[Specify file location here]`.
+* **Location**: You can find the configuration file at `[dpp_api/data/+ "company_name" + /parameter_metadata_"company_name".xlsx]`.
 
-### Common Tasks
+### Common Configurations
 
-* **To Modify a Parameter Name/Category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
-* **To Add a New Parameter**: Adding a new parameter value requires updating the configuration file and the database.
+* **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
+* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database.
 
 ### Configuration File Structure
 
@@ -143,7 +143,7 @@ The configuration file contains several sheets, each controlling a different asp
 #### `category_metadata` Sheet
 * `category`
 * `function_name`
-* `icon_category`: Uses Google Material Symbols icons. The name should be lower case with spaces replaced by underscores (e.g., `info_icon`).
+* `icon_category`: Uses [Google Material Symbols icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Rounded). The name should be lower case with spaces replaced by underscores (e.g., `info_icon`).
 
 #### `sub_category_metadata` Sheet
 * `sub_category`
@@ -151,7 +151,7 @@ The configuration file contains several sheets, each controlling a different asp
 
 ## 6. Database Management
 
-* **Location**: The database is located at `[Specify database location or connection string here]`.
+* **Location**: The database is located at `[Specify database location]`.
 
 
 ## Contributing
