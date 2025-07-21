@@ -86,7 +86,7 @@ This section describes the standard user workflow for viewing product data.
 ![Please select the company you want to work with](./resources/select company.png)
 &nbsp;
 
-2.  **Enter Product ID**: You can see the different parameters for your selected company's product ID.
+2.  **Enter Product ID**: Enter product ID which you want to see.
 ![Enter the product ID here](./resources/enter product ID.png)
 &nbsp;
 
@@ -95,7 +95,8 @@ This section describes the standard user workflow for viewing product data.
 &nbsp;
 
 4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to `Private Mode`.
-![User login](./resources/user login.png) Here you can Enter your credentials to get access to `Private Mode`.
+![User login](./resources/user login.png)
+    * Here you can Enter your credentials to get access to `Private Mode`.
 ![Enter credentials](./resources/enter credentials.png)
 &nbsp;
 
