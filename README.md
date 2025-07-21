@@ -139,12 +139,12 @@ This section explains how to modify and extend the DPP application's parameters 
 ### Introduction
 
 * **Purpose**: The configuration file controls the display names, categories, and layout of parameters within the `DPP_APP`.
-* **Location**: You can find the configuration file at `[dpp_api/data/+ "company_name" + /parameter_metadata_"company_name".xlsx]`.
+* **Location**: You can find the configuration file at `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]`.
 
 ### Common Configurations
 
 * **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
-* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database.
+* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database(e.g., You want to add a new parameter, you need to add raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and column in `[dpp_api/data/ + "company_name" + /static.csv]` or `[dpp_api/data/ + "company_name" + /dynamic.csv]`).
 
 ### Configuration File Structure
 
@@ -171,7 +171,11 @@ The configuration file contains several sheets, each controlling a different asp
 
 ## 6. Database Management
 
-* **Location**: The database is located at `[Specify database location]`.
+* **Location**: The databases are saved as two different types.
+    1. dynamic
+    2. static
+
+    They are located at `[dpp_api/data/ + "company_name" + /dynamic.csv]` and `[dpp_api/data/ + "company_name" + /static.csv]`.
 
 
 ## Contributing
