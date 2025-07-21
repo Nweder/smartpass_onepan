@@ -90,7 +90,7 @@ This section describes the standard user workflow for viewing product data.
 ![Enter the product ID here](./resources/enter product ID.png)
 &nbsp;
 
-3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in **Public Mode**.
+3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in `Public Mode`.
 ![Navigate parameters](./resources/navigate parameters.png)
 &nbsp;
 
