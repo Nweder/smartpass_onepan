@@ -128,9 +128,11 @@ Navigate to Product Updates `(9. Product Updates)`.
 ### Data Handling Concepts
 
 1.  **Write data in data base**:
-    * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click **Write data in data base**.
+    * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
 2.  **Show all including historic updates**:    
-    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking **Show all including historic updates**.
+    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking - [ ]  **Show all including historic updates**.
+    
+    ![data handling](./resources/data handling.png)
 
 ## 5. Developer Guide: System Configuration
 
