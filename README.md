@@ -106,17 +106,24 @@ This feature allows authorized users to manage product updates in `Private Mode`
 
 ### How to Add or Edit an Update
 
+Navigate to Product Updates `(9. Products Updates)`.
+
 1.  **Authentication**: Ensure you are logged in to the application to enable `Private Mode`.
+    * To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
+    ![Products updates](./resources/products update.png)
+    ![Edit authentication](./resources/edit authentication.png)
 2.  **Add/Edit a Row**:
-    * Click "Add Row" to create a new update entry.
+    * Click `Add row` to create a new update entry.
     * > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited:
     * > * `Product ID`
     * > * `Update ID`
     * > * `Timestamp`
     * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
 3.  **Save or Cancel**:
-    * Click **Save** to save your changes to the local database.
-    * Click **Cancel** to discard your changes.
+    * Click `Save` to save your changes to the local database.
+    * Click `Cancel` to discard your changes.
+
+    ![Edit, Save, Cancel](./resources/edit save cancel.png)
 
 ### Data Handling Concepts
 
