@@ -84,13 +84,21 @@ This section describes the standard user workflow for viewing product data.
 
 1.  **Select a Company**
 ![Please select the company you want to work with](./resources/select company.png)
-2.  **Enter Product ID**: You can see the different parameters for your selected company's product ID.
+&nbsp;
+
+2.  **Enter Product ID**: Enter product ID which you want to see.
 ![Enter the product ID here](./resources/enter product ID.png)
+&nbsp;
+
 3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in **Public Mode**.
 ![Navigate parameters](./resources/navigate parameters.png)
-4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to **Private Mode**.
+&nbsp;
+
+4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to `Private Mode`.
 ![User login](./resources/user login.png)
+    * Here you can Enter your credentials to get access to `Private Mode`.
 ![Enter credentials](./resources/enter credentials.png)
+&nbsp;
 
 ## 4. Feature Guide: Managing Product Updates
 
@@ -98,17 +106,24 @@ This feature allows authorized users to manage product updates in `Private Mode`
 
 ### How to Add or Edit an Update
 
+Navigate to Product Updates `(9. Products Updates)`.
+
 1.  **Authentication**: Ensure you are logged in to the application to enable `Private Mode`.
+    * To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
+    ![Products updates](./resources/products update.png)
+    ![Edit authentication](./resources/edit authentication.png)
 2.  **Add/Edit a Row**:
-    * Click "Add Row" to create a new update entry.
+    * Click `Add row` to create a new update entry.
     * > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited:
     * > * `Product ID`
     * > * `Update ID`
     * > * `Timestamp`
     * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
 3.  **Save or Cancel**:
-    * Click **Save** to save your changes to the local database.
-    * Click **Cancel** to discard your changes.
+    * Click `Save` to save your changes to the local database.
+    * Click `Cancel` to discard your changes.
+
+    ![Edit, Save, Cancel](./resources/edit save cancel.png)
 
 ### Data Handling Concepts
 
