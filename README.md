@@ -90,7 +90,7 @@ This section describes the standard user workflow for viewing product data.
 ![Enter the product ID here](./resources/enter product ID.png)
 &nbsp;
 
-3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in **Public Mode**.
+3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in `Public Mode`.
 ![Navigate parameters](./resources/navigate parameters.png)
 &nbsp;
 
@@ -106,7 +106,7 @@ This feature allows authorized users to manage product updates in `Private Mode`
 
 ### How to Add or Edit an Update
 
-Navigate to Product Updates `(9. Products Updates)`.
+Navigate to Product Updates `(9. Product Updates)`.
 
 1.  **Authentication**: Ensure you are logged in to the application to enable `Private Mode`.
     * To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
@@ -128,9 +128,11 @@ Navigate to Product Updates `(9. Products Updates)`.
 ### Data Handling Concepts
 
 1.  **Write data in data base**:
-    * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click **Write data in data base**.
+    * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
 2.  **Show all including historic updates**:    
-    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking **Show all including historic updates**.
+    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking - [ ]  **Show all including historic updates**.
+    
+    ![data handling](./resources/data handling.png)
 
 ## 5. Developer Guide: System Configuration
 
@@ -139,12 +141,12 @@ This section explains how to modify and extend the DPP application's parameters 
 ### Introduction
 
 * **Purpose**: The configuration file controls the display names, categories, and layout of parameters within the `DPP_APP`.
-* **Location**: You can find the configuration file at `[dpp_api/data/+ "company_name" + /parameter_metadata_"company_name".xlsx]`.
+* **Location**: You can find the configuration file at `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]`.
 
 ### Common Configurations
 
 * **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
-* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database.
+* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database _(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else in `[dpp_api/data/ + "company_name" + /dynamic.csv]`)_.
 
 ### Configuration File Structure
 
@@ -171,21 +173,8 @@ The configuration file contains several sheets, each controlling a different asp
 
 ## 6. Database Management
 
-* **Location**: The database is located at `[Specify database location]`.
+* **Location**: The databases are saved as two different types.
+    1. dynamic
+    2. static
 
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+    They are located at `[dpp_api/data/ + "company_name" + /dynamic.csv]` and `[dpp_api/data/ + "company_name" + /static.csv]`.
