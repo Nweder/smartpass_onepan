@@ -2,7 +2,7 @@
 FROM python:3.9.13
 
 # Set the working directory in the container to /app
-WORKDIR /api
+WORKDIR /dpp_api
 
 # Copy the current directory (our Flask app) into the container at /app
 COPY . .

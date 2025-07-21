@@ -9,7 +9,7 @@ RUN conda install -n base -c conda-forge mamba && \
     mamba env create -f /tmp/environment.yml --override-channels -c conda-forge --channel-priority flexible
 
 # Set the working directory in the container to /app
-WORKDIR /app
+WORKDIR /dpp_app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
