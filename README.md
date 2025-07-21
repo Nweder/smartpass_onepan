@@ -83,6 +83,7 @@ The application consists of two main parts: a backend API and a frontend Web App
 This section describes the standard user workflow for viewing product data.
 
 1.  **Select a Company**
+![Please select the company you want to work with](./resources/select company.png)
 2.  **Enter Product ID**
 3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product. You are initially in **Public Mode**.
 4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to **Private Mode**.
