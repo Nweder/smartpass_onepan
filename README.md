@@ -116,10 +116,13 @@ This feature allows authorized users to manage product updates in `Private Mode`
 
 This section explains how to modify and extend the DPP application's parameters and layout using the configuration file.
 
+### Introduction
+
 * **Purpose**: The configuration file controls the display names, categories, and layout of parameters within the `DPP_APP`.
 * **Location**: You can find the configuration file at `[Specify file location here]`.
 
 ### Common Tasks
+
 * **To Modify a Parameter Name/Category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
 * **To Add a New Parameter**: Adding a new parameter value requires updating the configuration file and the database.
 
