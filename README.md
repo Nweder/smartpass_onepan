@@ -94,8 +94,8 @@ This section describes the standard user workflow for viewing product data.
 ![Navigate parameters](./resources/navigate parameters.png)
 &nbsp;
 
-4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to **Private Mode**.
-![User login](./resources/user login.png)
+4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to `Private Mode`.
+![User login](./resources/user login.png) Here you can Enter your credentials to get access to `Private Mode`.
 ![Enter credentials](./resources/enter credentials.png)
 &nbsp;
 
