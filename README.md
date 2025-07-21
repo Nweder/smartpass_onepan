@@ -144,7 +144,7 @@ This section explains how to modify and extend the DPP application's parameters 
 ### Common Configurations
 
 * **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
-* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database(e.g., You want to add a new parameter, you need to add raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and column in `[dpp_api/data/ + "company_name" + /static.csv]` or `[dpp_api/data/ + "company_name" + /dynamic.csv]`).
+* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else `[dpp_api/data/ + "company_name" + /dynamic.csv]`).
 
 ### Configuration File Structure
 
