@@ -34,9 +34,9 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 	* 6.1. [Introduction](#Introduction)
 	* 6.2. [Common Configurations](#CommonConfigurations)
 	* 6.3. [Configuration File Structure](#ConfigurationFileStructure)
-		* 6.3.1. [`parameter_metadata` Sheet](#parameter_metadataSheet)
-		* 6.3.2. [`category_metadata` Sheet](#category_metadataSheet)
-		* 6.3.3. [`sub_category_metadata` Sheet](#sub_category_metadataSheet)
+		* 6.3.1. [parameter_metadata Sheet](#parameter_metadataSheet)
+		* 6.3.2. [category_metadata Sheet](#category_metadataSheet)
+		* 6.3.3. [sub_category_metadata Sheet](#sub_category_metadataSheet)
 * 7. [Database](#Database)
 
 <!-- vscode-markdown-toc-config
