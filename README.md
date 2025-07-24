@@ -24,11 +24,11 @@ git push -uf origin main
 
 ### Install Docker Desktop
 
-    - Download Docker Desktop as per your system configuration given below: 
+- Download Docker Desktop as per your system configuration given below: 
 
-        - For [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
-        - For [Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
-        - For [Linux](https://docs.docker.com/desktop/setup/install/linux/)
+    - For [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+    - For [Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
+    - For [Linux](https://docs.docker.com/desktop/setup/install/linux/)
 
 - Install and login Docker Desktop in your system.
 
@@ -40,22 +40,22 @@ cd dpp_smartpass
 
 ### Build Multi-container docker application
 
-    - Build Multi-container docker application with the help of docker-compose.yml
-        ```bash
-        docker compose up
-        ```
-    - Check if the docker container is running or not.
-        ```bash
-        docker ps
-        ```
-    - If you want to stop the conainer.
-        ```bash
-        docker compose down
-        ```
+- Build Multi-container docker application with the help of docker-compose.yml
+    ```bash
+    docker compose up
+    ```
+- Check if the docker container is running or not.
+    ```bash
+    docker ps
+    ```
+- If you want to stop the conainer.
+    ```bash
+    docker compose down
+    ```
 
 ### Check logs in terminal/in docker desktop
 
-    - Open frontend address in browser: http://localhost:8501/
+- Open frontend address in browser: http://localhost:8501/
 
 ***
 
