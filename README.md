@@ -1,10 +1,10 @@
 # Digital Product Passport (DPP) Application
-_**A smartpass app for tracking product life cycle.**_
+_**Welcome to the Digital Product Passport (DPP) application. This document provides a complete overview of the components of the application, user guides, and configuration instructions.**_
 
 &nbsp;
 
 
-## Add your files
+## 1. Add your files
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
 - [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
@@ -18,12 +18,7 @@ git push -uf origin main
 
 ***
 
-
-## Description
-This is the Web Application of **Digital Product Passport** to track product life cycle.
-_This can be changed as per requirement._
-
-## Installation and Run Web Application
+## 2. Installation and Run Web Application
 
 1. **Install Docker Desktop**
 
@@ -62,10 +57,7 @@ cd dpp_smartpass
 
 &nbsp;
 
-## 1. Introduction
-Welcome to the Digital Product Passport (DPP) application. This document provides a complete overview of the components of the application, user guides, and configuration instructions.
-
-## 2. Application components
+## 3. Application components
 
 The application consists of two main parts: a backend API and a frontend Web Application.
 
@@ -78,7 +70,7 @@ The application consists of two main parts: a backend API and a frontend Web App
     * **Public Mode**: Provides a basic view of product parameters.
     * **Private Mode**: Unlocked by logging in. This mode shows an increased number of parameters and gives users the ability to update them.
 
-## 3. User Guide: How to Use the Application
+## 4. User Guide: How to Use the Application
 
 This section describes the standard user workflow for viewing product data.
 
@@ -100,7 +92,7 @@ This section describes the standard user workflow for viewing product data.
 ![Enter credentials](./resources/enter credentials.png)
 &nbsp;
 
-## 4. Feature Guide: Managing Product Updates
+## 5. Feature Guide: Managing Product Updates
 
 This feature allows authorized users to manage product updates in `Private Mode`. In `Public Mode`, you can only view existing updates.
 
@@ -130,11 +122,12 @@ Navigate to Product Updates `(9. Product Updates)`.
 1.  **Write data in data base**:
     * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
 2.  **Show all including historic updates**:    
-    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking **Show all including historic updates**.
+    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking:
+        - [x] **Show all including historic updates**.
     
     ![data handling](./resources/data handling.png)
 
-## 5. Developer Guide: System Configuration
+## 6. Developer Guide: System Configuration
 
 This section explains how to modify and extend the DPP application's parameters and layout using the configuration file.
 
@@ -171,7 +164,7 @@ The configuration file contains several sheets, each controlling a different asp
 * `sub_category`
 * `conf_print`
 
-## 6. Database Management
+## 6.2. Database
 
 * **Location**: The databases are saved as two different types.
     1. dynamic
