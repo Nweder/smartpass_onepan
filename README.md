@@ -8,13 +8,13 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 ##  Table of Contents
 
 <!-- vscode-markdown-toc -->
-* 1. [ Add your files](#Addyourfiles)
+* 1. [ Add Your Files](#AddYourFiles)
 * 2. [ Installation and Run Web Application](#InstallationandRunWebApplication)
 	* 2.1. [ Install Docker Desktop](#InstallDockerDesktop)
-	* 2.2. [ Clone the repository](#Clonetherepository)
-	* 2.3. [ Build Multi-container docker application](#BuildMulti-containerdockerapplication)
-	* 2.4. [ Check logs in terminal/in docker desktop](#Checklogsinterminalindockerdesktop)
-* 3. [ Application components](#Applicationcomponents)
+	* 2.2. [ Clone the Repository](#ClonetheRepository)
+	* 2.3. [ Build Multi-container Docker Application](#BuildMulti-containerDockerApplication)
+	* 2.4. [ Check Logs in Terminal/in Docker Desktop](#CheckLogsinTerminalinDockerDesktop)
+* 3. [ Application Components](#ApplicationComponents)
 	* 3.1. [ DPP_API (Backend)](#DPP_APIBackend)
 	* 3.2. [ DPP_APP (Frontend)](#DPP_APPFrontend)
 * 4. [ User Guide: How to Use the Application](#UserGuide:HowtoUsetheApplication)
@@ -28,8 +28,8 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 		* 5.1.2. [ Add/Edit a Row:](#AddEditaRow:)
 		* 5.1.3. [ Save or Cancel:](#SaveorCancel:)
 	* 5.2. [ Data Handling Concepts](#DataHandlingConcepts)
-		* 5.2.1. [ Write data in data base:](#Writedataindatabase:)
-		* 5.2.2. [ Show all including historic updates:](#Showallincludinghistoricupdates:)
+		* 5.2.1. [ Write Data in Data Base:](#WriteDatainDataBase:)
+		* 5.2.2. [ Show All Including Historic Updates:](#ShowAllIncludingHistoricUpdates:)
 * 6. [ Developer Guide: System Configuration](#DeveloperGuide:SystemConfiguration)
 	* 6.1. [ Configuration File](#ConfigurationFile)
 		* 6.1.1. [ Configuration File Structure](#ConfigurationFileStructure)
@@ -45,7 +45,7 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 
 &nbsp;
 
-##  1. <a name='Addyourfiles'></a> Add your files
+##  1. <a name='AddYourFiles'></a> Add Your Files
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
 - [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
@@ -72,13 +72,13 @@ git push -uf origin main
 
 - Install and login Docker Desktop in your system.
 
-###  2.2. <a name='Clonetherepository'></a> Clone the repository
+###  2.2. <a name='ClonetheRepository'></a> Clone the Repository
 ```bash
 git clone https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.git
 cd dpp_smartpass
 ```
 
-###  2.3. <a name='BuildMulti-containerdockerapplication'></a> Build Multi-container docker application
+###  2.3. <a name='BuildMulti-containerDockerApplication'></a> Build Multi-container Docker Application
 
 - Build Multi-container docker application with the help of docker-compose.yml
     ```bash
@@ -93,7 +93,7 @@ cd dpp_smartpass
     docker compose down
     ```
 
-###  2.4. <a name='Checklogsinterminalindockerdesktop'></a> Check logs in terminal/in docker desktop
+###  2.4. <a name='CheckLogsinTerminalinDockerDesktop'></a> Check Logs in Terminal/in Docker Desktop
 
 - Open frontend address in browser: http://localhost:8501/
 
@@ -101,7 +101,7 @@ cd dpp_smartpass
 
 &nbsp;
 
-##  3. <a name='Applicationcomponents'></a> Application components
+##  3. <a name='ApplicationComponents'></a> Application Components
 
 The application consists of two main parts: a backend API and a frontend Web Application.
 
@@ -171,11 +171,11 @@ Navigate to Product Updates `(9. Product Updates)`.
 
 ###  5.2. <a name='DataHandlingConcepts'></a> Data Handling Concepts
 
-####  5.2.1. <a name='Writedataindatabase:'></a> Write data in data base:
+####  5.2.1. <a name='WriteDatainDataBase:'></a> Write Data in Data Base:
 * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
 ![data writing in database](./resources/data writing.png)
 
-####  5.2.2. <a name='Showallincludinghistoricupdates:'></a> Show all including historic updates:    
+####  5.2.2. <a name='ShowAllIncludingHistoricUpdates:'></a> Show All Including Historic Updates:    
 * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking:
     - [x] **Show all including historic updates**.
 ![data history](./resources/data history.png)
@@ -188,8 +188,8 @@ Navigate to Product Updates `(9. Product Updates)`.
 
 This section explains how to modify and extend the DPP application's parameters and web application layout using `configuration file`.
 
-* **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
-* **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database _(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else in `[dpp_api/data/ + "company_name" + /dynamic.csv]`)_.
+* **To Modify an Existing Parameter Name/Category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
+* **To Add a New Parameter**: Adding a new parameter value requires updating the configuration file and the database _(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else in `[dpp_api/data/ + "company_name" + /dynamic.csv]`)_.
 
 ###  6.1. <a name='ConfigurationFile'></a> Configuration File
 
