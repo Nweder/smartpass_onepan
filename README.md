@@ -4,9 +4,9 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 &nbsp;
 
 <!-- vscode-markdown-toc -->
-* 1. [1. Add your files](#Addyourfiles)
-* 2. [2. Installation and Run Web Application](#InstallationandRunWebApplication)
-* 3. [3. Application components](#Applicationcomponents)
+* 1. [Add your files](#Addyourfiles)
+* 2. [Installation and Run Web Application](#InstallationandRunWebApplication)
+* 3. [Application components](#Applicationcomponents)
 	* 3.1. [DPP_API (Backend)](#DPP_APIBackend)
 	* 3.2. [DPP_APP (Frontend)](#DPP_APPFrontend)
 * 4. [4. User Guide: How to Use the Application](#UserGuide:HowtoUsetheApplication)
