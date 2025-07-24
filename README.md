@@ -165,10 +165,7 @@ Navigate to Product Updates `(9. Product Updates)`.
 ![Edit authentication](./resources/edit authentication.png)
 ####  5.1.2. <a name='AddEditaRow:'></a>Add/Edit a Row:
 * Click `Add row` to create a new update entry.
-* > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited:
-* > * `Product ID`
-* > * `Update ID`
-* > * `Timestamp`
+* > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited such as: `Product ID`, `Update ID`, and `Timestamp`
 * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
 ####  5.1.3. <a name='SaveorCancel:'></a>Save or Cancel:
 * Click `Save` to save your changes to the local database.
@@ -180,11 +177,11 @@ Navigate to Product Updates `(9. Product Updates)`.
 
 ####  5.2.1. <a name='Writedataindatabase:'></a>Write data in data base:
 * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
+![data writing in database](./resources/data writing.png)
 ####  5.2.2. <a name='Showallincludinghistoricupdates:'></a>Show all including historic updates:    
 * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking:
     - [x] **Show all including historic updates**.
-    
-    ![data handling](./resources/data handling.png)
+![data history](./resources/data history.png)
 
 ***
 
