@@ -3,32 +3,8 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 
 &nbsp;
 
-<!-- vscode-markdown-toc -->
-* 1. [Add your files](#Addyourfiles)
-* 2. [Installation and Run Web Application](#InstallationandRunWebApplication)
-* 3. [Application components](#Applicationcomponents)
-	* 3.1. [DPP_API (Backend)](#DPP_APIBackend)
-	* 3.2. [DPP_APP (Frontend)](#DPP_APPFrontend)
-* 4. [4. User Guide: How to Use the Application](#UserGuide:HowtoUsetheApplication)
-* 5. [5. Feature Guide: Managing Product Updates](#FeatureGuide:ManagingProductUpdates)
-	* 5.1. [How to Add or Edit an Update](#HowtoAddorEditanUpdate)
-	* 5.2. [Data Handling Concepts](#DataHandlingConcepts)
-* 6. [6. Developer Guide: System Configuration](#DeveloperGuide:SystemConfiguration)
-	* 6.1. [Introduction](#Introduction)
-	* 6.2. [Common Configurations](#CommonConfigurations)
-	* 6.3. [Configuration File Structure](#ConfigurationFileStructure)
-		* 6.3.1. [`parameter_metadata` Sheet](#parameter_metadataSheet)
-		* 6.3.2. [`category_metadata` Sheet](#category_metadataSheet)
-		* 6.3.3. [`sub_category_metadata` Sheet](#sub_category_metadataSheet)
-* 7. [6.2. Database](#Database)
 
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-
-##  1. <a name='Addyourfiles'></a>1. Add your files
+## 1. Add your files
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
 - [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
@@ -42,7 +18,7 @@ git push -uf origin main
 
 ***
 
-##  2. <a name='InstallationandRunWebApplication'></a>2. Installation and Run Web Application
+## 2. Installation and Run Web Application
 
 1. **Install Docker Desktop**
 
@@ -81,20 +57,20 @@ cd dpp_smartpass
 
 &nbsp;
 
-##  3. <a name='Applicationcomponents'></a>3. Application components
+## 3. Application components
 
 The application consists of two main parts: a backend API and a frontend Web Application.
 
-###  3.1. <a name='DPP_APIBackend'></a>DPP_API (Backend)
+### DPP_API (Backend)
 * **Description**: This component serves as the company data storage and provides the Application Programming Interface (API). It is responsible for communicating and exchanging data with the `DPP_APP`.
 
-###  3.2. <a name='DPP_APPFrontend'></a>DPP_APP (Frontend)
+### DPP_APP (Frontend)
 * **Description**: This is the user-facing web application where Digital Product Passport parameters can be viewed and updated. All parameters shown in the app are fetched from the `DPP_API`.
 * **Access Modes**: The application has two access levels:
     * **Public Mode**: Provides a basic view of product parameters.
     * **Private Mode**: Unlocked by logging in. This mode shows an increased number of parameters and gives users the ability to update them.
 
-##  4. <a name='UserGuide:HowtoUsetheApplication'></a>4. User Guide: How to Use the Application
+## 4. User Guide: How to Use the Application
 
 This section describes the standard user workflow for viewing product data.
 
@@ -116,11 +92,11 @@ This section describes the standard user workflow for viewing product data.
 ![Enter credentials](./resources/enter credentials.png)
 &nbsp;
 
-##  5. <a name='FeatureGuide:ManagingProductUpdates'></a>5. Feature Guide: Managing Product Updates
+## 5. Feature Guide: Managing Product Updates
 
 This feature allows authorized users to manage product updates in `Private Mode`. In `Public Mode`, you can only view existing updates.
 
-###  5.1. <a name='HowtoAddorEditanUpdate'></a>How to Add or Edit an Update
+### How to Add or Edit an Update
 
 Navigate to Product Updates `(9. Product Updates)`.
 
@@ -141,7 +117,7 @@ Navigate to Product Updates `(9. Product Updates)`.
 
     ![Edit, Save, Cancel](./resources/edit save cancel.png)
 
-###  5.2. <a name='DataHandlingConcepts'></a>Data Handling Concepts
+### Data Handling Concepts
 
 1.  **Write data in data base**:
     * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
@@ -151,25 +127,25 @@ Navigate to Product Updates `(9. Product Updates)`.
     
     ![data handling](./resources/data handling.png)
 
-##  6. <a name='DeveloperGuide:SystemConfiguration'></a>6. Developer Guide: System Configuration
+## 6. Developer Guide: System Configuration
 
 This section explains how to modify and extend the DPP application's parameters and layout using the configuration file.
 
-###  6.1. <a name='Introduction'></a>Introduction
+### Introduction
 
 * **Purpose**: The configuration file controls the display names, categories, and layout of parameters within the `DPP_APP`.
 * **Location**: You can find the configuration file at `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]`.
 
-###  6.2. <a name='CommonConfigurations'></a>Common Configurations
+### Common Configurations
 
 * **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
 * **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database _(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else in `[dpp_api/data/ + "company_name" + /dynamic.csv]`)_.
 
-###  6.3. <a name='ConfigurationFileStructure'></a>Configuration File Structure
+### Configuration File Structure
 
 The configuration file contains several sheets, each controlling a different aspect of the application.
 
-####  6.3.1. <a name='parameter_metadataSheet'></a>`parameter_metadata` Sheet
+#### `parameter_metadata` Sheet
 * `category`
 * `sub_category`
 * `parameter`
@@ -179,16 +155,16 @@ The configuration file contains several sheets, each controlling a different asp
 * `type` (e.g., string, number)
 * `data model definition string` (Includes documentation about GS1 and Schema)
 
-####  6.3.2. <a name='category_metadataSheet'></a>`category_metadata` Sheet
+#### `category_metadata` Sheet
 * `category`
 * `function_name`
 * `icon_category`: Uses [Google Material Symbols icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Rounded). The name should be lower case with spaces replaced by underscores (e.g., `info_icon`).
 
-####  6.3.3. <a name='sub_category_metadataSheet'></a>`sub_category_metadata` Sheet
+#### `sub_category_metadata` Sheet
 * `sub_category`
 * `conf_print`
 
-##  7. <a name='Database'></a>6.2. Database
+## 6.2. Database
 
 * **Location**: The databases are saved as two different types.
     1. dynamic
