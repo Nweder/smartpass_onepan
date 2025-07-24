@@ -1,10 +1,11 @@
 # Digital Product Passport (DPP) Application
 _**Welcome to the Digital Product Passport (DPP) application. This document provides a complete overview of the components of the application, user guides, and configuration instructions.**_
 
+***
+
 &nbsp;
 
-
-## 1. Add your files
+## Add your files
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
 - [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
@@ -15,12 +16,13 @@ git remote add origin https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.g
 git branch -M main
 git push -uf origin main
 ```
-
 ***
 
-## 2. Installation and Run Web Application
+&nbsp;
 
-1. **Install Docker Desktop**
+## Installation and Run Web Application
+
+### **Install Docker Desktop**
 
     - Download Docker Desktop as per your system configuration given below: 
 
@@ -30,13 +32,13 @@ git push -uf origin main
 
 - Install and login Docker Desktop in your system.
 
-2. **Clone the repository**
+### **Clone the repository**
 ```bash
 git clone https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.git
 cd dpp_smartpass
 ```
 
-3. **Build Multi-container docker application**
+### **Build Multi-container docker application**
 
     - Build Multi-container docker application with the help of docker-compose.yml
         ```bash
@@ -51,13 +53,15 @@ cd dpp_smartpass
         docker compose down
         ```
 
-4. **Check logs in terminal/in docker desktop**
+### **Check logs in terminal/in docker desktop**
 
     - Open frontend address in browser: http://localhost:8501/
 
+***
+
 &nbsp;
 
-## 3. Application components
+## Application components
 
 The application consists of two main parts: a backend API and a frontend Web Application.
 
@@ -70,29 +74,36 @@ The application consists of two main parts: a backend API and a frontend Web App
     * **Public Mode**: Provides a basic view of product parameters.
     * **Private Mode**: Unlocked by logging in. This mode shows an increased number of parameters and gives users the ability to update them.
 
-## 4. User Guide: How to Use the Application
+***
+
+&nbsp;
+
+## User Guide: How to Use the Application
 
 This section describes the standard user workflow for viewing product data.
 
-1.  **Select a Company**
+### **Select a Company**
 ![Please select the company you want to work with](./resources/select company.png)
 &nbsp;
 
-2.  **Enter Product ID**: Enter product ID which you want to see.
+### **Enter Product ID**: Enter product ID which you want to see.
 ![Enter the product ID here](./resources/enter product ID.png)
 &nbsp;
 
-3.  **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in `Public Mode`.
+### **Navigate Parameters**: You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in `Public Mode`.
 ![Navigate parameters](./resources/navigate parameters.png)
 &nbsp;
 
-4.  **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to `Private Mode`.
+### **Log In for Private Access**: To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to `Private Mode`.
 ![User login](./resources/user login.png)
     * Here you can Enter your credentials to get access to `Private Mode`.
 ![Enter credentials](./resources/enter credentials.png)
+
+***
+
 &nbsp;
 
-## 5. Feature Guide: Managing Product Updates
+## Feature Guide: Managing Product Updates
 
 This feature allows authorized users to manage product updates in `Private Mode`. In `Public Mode`, you can only view existing updates.
 
@@ -100,34 +111,38 @@ This feature allows authorized users to manage product updates in `Private Mode`
 
 Navigate to Product Updates `(9. Product Updates)`.
 
-1.  **Authentication**: Ensure you are logged in to the application to enable `Private Mode`.
-    * To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
-    ![Products updates](./resources/products update.png)
-    ![Edit authentication](./resources/edit authentication.png)
-2.  **Add/Edit a Row**:
-    * Click `Add row` to create a new update entry.
-    * > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited:
-    * > * `Product ID`
-    * > * `Update ID`
-    * > * `Timestamp`
-    * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
-3.  **Save or Cancel**:
-    * Click `Save` to save your changes to the local database.
-    * Click `Cancel` to discard your changes.
+#### **Authentication**: Ensure you are logged in to the application to enable `Private Mode`.
+* To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
+![Products updates](./resources/products update.png)
+![Edit authentication](./resources/edit authentication.png)
+#### **Add/Edit a Row**:
+* Click `Add row` to create a new update entry.
+* > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited:
+* > * `Product ID`
+* > * `Update ID`
+* > * `Timestamp`
+* > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
+#### **Save or Cancel**:
+* Click `Save` to save your changes to the local database.
+* Click `Cancel` to discard your changes.
 
-    ![Edit, Save, Cancel](./resources/edit save cancel.png)
+![Edit, Save, Cancel](./resources/edit save cancel.png)
 
 ### Data Handling Concepts
 
-1.  **Write data in data base**:
-    * **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
-2.  **Show all including historic updates**:    
-    * **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking:
-        - [x] **Show all including historic updates**.
+#### **Write data in data base**:
+* **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
+#### **Show all including historic updates**:    
+* **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking:
+    - [x] **Show all including historic updates**.
     
     ![data handling](./resources/data handling.png)
 
-## 6. Developer Guide: System Configuration
+***
+
+&nbsp;
+
+## Developer Guide: System Configuration
 
 This section explains how to modify and extend the DPP application's parameters and layout using the configuration file.
 
@@ -163,6 +178,10 @@ The configuration file contains several sheets, each controlling a different asp
 #### `sub_category_metadata` Sheet
 * `sub_category`
 * `conf_print`
+
+***
+
+&nbsp;
 
 ## 6.2. Database
 
