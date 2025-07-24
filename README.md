@@ -189,47 +189,47 @@ Navigate to Product Updates `(9. Product Updates)`.
 
 ##  6. <a name='DeveloperGuide:SystemConfiguration'></a>Developer Guide: System Configuration
 
-This section explains how to modify and extend the DPP application's parameters and layout using the configuration file.
-
-###  6.1. <a name='Introduction'></a>Introduction
-
-* **Purpose**: The `configuration file` controls the display names, categories, and layout of parameters within the `DPP_APP`.
-* **Location**: You can find the `configuration file` at `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]`.
-
-###  6.2. <a name='CommonConfigurations'></a>Common Configurations
+This section explains how to modify and extend the DPP application's parameters and web application layout using `configuration file`.
 
 * **To modify an existing parameter name/category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
 * **To add a new parameter**: Adding a new parameter value requires updating the configuration file and the database _(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else in `[dpp_api/data/ + "company_name" + /dynamic.csv]`)_.
 
-###  6.3. <a name='ConfigurationFileStructure'></a>Configuration File Structure
+###  6.1. <a name='ConfigurationFile'></a>Configuration File
 
-The configuration file contains several sheets, each controlling a different aspect of the application.
+* **Purpose**: The `configuration file` controls the display names, categories, and layout of parameters within the `DPP_APP`.
+* **Location**: You can find the `configuration file` at `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]`.
 
-####  6.3.1. <a name='parameter_metadataSheet'></a>`parameter_metadata` Sheet
-* `category`
-* `sub_category`
-* `parameter`
-* `order_parameter`
-* `subparameter`
-* `access` (e.g., public/private)
-* `type` (e.g., string, number)
-* `data model definition string` (Includes documentation about GS1 and Schema)
 
-####  6.3.2. <a name='category_metadataSheet'></a>`category_metadata` Sheet
-* `category`
-* `function_name`
-* `icon_category`: Uses [Google Material Symbols icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Rounded). The name should be lower case with spaces replaced by underscores (e.g., `info_icon`).
+####  6.1.1 <a name='ConfigurationFileStructure'></a>Configuration File Structure
 
-####  6.3.3. <a name='sub_category_metadataSheet'></a>`sub_category_metadata` Sheet
-* `sub_category`
-* `conf_print`
+* The configuration file contains several sheets, each controlling a different aspect of the application.
+
+* `parameter_metadata` Sheet
+	* `category`
+	* `sub_category`
+	* `parameter`
+	* `order_parameter`
+	* `subparameter`
+	* `access` (e.g., public/private)
+	* `type` (e.g., string, number)
+	* `data model definition string` (Includes documentation about GS1 and Schema)
+
+* `category_metadata` Sheet
+	* `category`
+	* `function_name`
+	* `icon_category`: Uses [Google Material Symbols icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Rounded). The name should be lower case with spaces replaced by underscores (e.g., `info_icon`).
+
+* `sub_category_metadata` Sheet
+	* `sub_category`
+	* `conf_print`
 
 ***
 
 &nbsp;
 
-##  7. <a name='Database'></a>Database
+###  6.3 <a name='Database'></a>Database
 
+* **Purpose**: This is a basic representation of the company database. It contains the data itself.
 * **Location**: The databases are saved as two different types.
     1. dynamic
     2. static
