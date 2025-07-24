@@ -5,6 +5,8 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 
 &nbsp;
 
+## Table of Contents
+
 <!-- vscode-markdown-toc -->
 * 1. [Add your files](#Addyourfiles)
 * 2. [Installation and Run Web Application](#InstallationandRunWebApplication)
@@ -24,7 +26,7 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 	* 5.1. [How to Add or Edit an Update](#HowtoAddorEditanUpdate)
 		* 5.1.1. [Authentication:](#Authentication:)
 		* 5.1.2. [Add/Edit a Row:](#AddEditaRow:)
-		* 5.1.3. [**Save or Cancel**:](#SaveorCancel:)
+		* 5.1.3. [Save or Cancel:](#SaveorCancel:)
 	* 5.2. [Data Handling Concepts](#DataHandlingConcepts)
 		* 5.2.1. [Write data in data base:](#Writedataindatabase:)
 		* 5.2.2. [Show all including historic updates:](#Showallincludinghistoricupdates:)
@@ -35,7 +37,7 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 		* 6.3.1. [`parameter_metadata` Sheet](#parameter_metadataSheet)
 		* 6.3.2. [`category_metadata` Sheet](#category_metadataSheet)
 		* 6.3.3. [`sub_category_metadata` Sheet](#sub_category_metadataSheet)
-* 7. [6.2. Database](#Database)
+* 7. [Database](#Database)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -168,7 +170,7 @@ Navigate to Product Updates `(9. Product Updates)`.
 * > * `Update ID`
 * > * `Timestamp`
 * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
-####  5.1.3. <a name='SaveorCancel:'></a>**Save or Cancel**:
+####  5.1.3. <a name='SaveorCancel:'></a>Save or Cancel:
 * Click `Save` to save your changes to the local database.
 * Click `Cancel` to discard your changes.
 
@@ -229,7 +231,7 @@ The configuration file contains several sheets, each controlling a different asp
 
 &nbsp;
 
-##  7. <a name='Database'></a>6.2. Database
+##  7. <a name='Database'></a>Database
 
 * **Location**: The databases are saved as two different types.
     1. dynamic
