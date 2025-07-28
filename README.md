@@ -156,23 +156,23 @@ Navigate to Product Updates `(9. Product Updates)`.
 
 ####  5.1.1. <a name='Authentication:'></a> Authentication:
 * Ensure you are logged in to the application to enable `Private Mode`.
-* To add or edit an update click `Add/Edit update` which opens pop-up for user authentication.
+* To add or edit an update click <kbd> <br> Add/Edit update <br> </kbd> which opens pop-up for user authentication.
 ![Products updates](./resources/products update.png)
 ![Edit authentication](./resources/edit authentication.png)
 ####  5.1.2. <a name='AddEditaRow:'></a> Add/Edit a Row:
-* Click `Add row` to create a new update entry.
+* Click <kbd> <br> Add row <br> </kbd> to create a new update entry.
 * > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited such as: `Product ID`, `Update ID`, and `Timestamp`
 * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
 ####  5.1.3. <a name='SaveorCancel:'></a> Save or Cancel:
-* Click `Save` to save your changes to the local database.
-* Click `Cancel` to discard your changes.
+* Click <kbd> <br> Save </br> </kbd> to save your changes to the local database.
+* Click <kbd> <br > Cancel </br> </kbd> to discard your changes.
 
 ![Edit, Save, Cancel](./resources/edit save cancel.png)
 
 ###  5.2. <a name='DataHandlingConcepts'></a> Data Handling Concepts
 
 ####  5.2.1. <a name='WriteDatainDatabase:'></a> Write Data in Database:
-* **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in database`.
+* **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click <kbd> <br> Write data in database </br> </kbd>.
 ![data writing in database](./resources/data writing.png)
 
 ####  5.2.2. <a name='ShowAllIncludingHistoricUpdates:'></a> Show All Including Historic Updates:    
