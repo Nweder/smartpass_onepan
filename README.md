@@ -165,7 +165,7 @@ Navigate to Product Updates `(9. Product Updates)`.
 * > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
 ####  5.1.3. <a name='SaveorCancel:'></a> Save or Cancel:
 * Click <kbd> <br> Save </br> </kbd> to save your changes to the local database.
-* Click <kbd> <br > Cancel </br> </kbd> to discard your changes.
+* Click <kbd> <br > <code style="color : red"> Cancel </code> </br> </kbd> to discard your changes.
 
 ![Edit, Save, Cancel](./resources/edit save cancel.png)
 
