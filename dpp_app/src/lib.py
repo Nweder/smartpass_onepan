@@ -235,7 +235,7 @@ def print_data (headers, values, conf_print, formats, header_color=header_color)
                         col_btn1, col_btn2 = st.columns([1,8])
                         col_btn = [col_btn1, col_btn2]
                         if 'save_changes' in global_state.get_key_names() and global_state['save_changes']:                            
-                            if col_btn[1].button('Write data in data base'):
+                            if col_btn[1].button('Write data in database'):
                                 fd = communication()
                                 status = fd.send_data(global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header])
                                 if status == 'OK':
