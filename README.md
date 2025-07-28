@@ -28,7 +28,7 @@ _**Welcome to the Digital Product Passport (DPP) application. This document prov
 		* 5.1.2. [ Add/Edit a Row:](#AddEditaRow:)
 		* 5.1.3. [ Save or Cancel:](#SaveorCancel:)
 	* 5.2. [ Data Handling Concepts](#DataHandlingConcepts)
-		* 5.2.1. [ Write Data in Data Base:](#WriteDatainDataBase:)
+		* 5.2.1. [ Write Data in Database:](#WriteDatainDatabase:)
 		* 5.2.2. [ Show All Including Historic Updates:](#ShowAllIncludingHistoricUpdates:)
 * 6. [ Developer Guide: System Configuration](#DeveloperGuide:SystemConfiguration)
 	* 6.1. [ Configuration File](#ConfigurationFile)
@@ -171,8 +171,8 @@ Navigate to Product Updates `(9. Product Updates)`.
 
 ###  5.2. <a name='DataHandlingConcepts'></a> Data Handling Concepts
 
-####  5.2.1. <a name='WriteDatainDataBase:'></a> Write Data in Data Base:
-* **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in data base`.
+####  5.2.1. <a name='WriteDatainDatabase:'></a> Write Data in Database:
+* **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click `Write data in database`.
 ![data writing in database](./resources/data writing.png)
 
 ####  5.2.2. <a name='ShowAllIncludingHistoricUpdates:'></a> Show All Including Historic Updates:    
