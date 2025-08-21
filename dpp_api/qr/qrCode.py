@@ -9,7 +9,7 @@ path_data = './data/ONEPan'
 qr = qrcode.QRCode(version=1, box_size=10, border=5)
 
 # Define the data to be encoded in the QR code
-data = "http://172.25.113.181:8501/?Product_ID=3"
+data = "http://172.25.113.64:8501/?Company=Brighteco&Product_ID=1"
 
 # Add the data to the QR code object
 qr.add_data(data)

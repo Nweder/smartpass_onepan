@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "Launch dpp_api Flask Backend",
+      "program": "${workspaceFolder}/dpp_api/app.py",
+      "env": {
+        "FLASK_APP": "app.py",
+        "FLASK_ENV": "development"
+      },
+      "cwd": "${workspaceFolder}/dpp_api"
+    },
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "Launch dpp_app Streamlit Frontend",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "${workspaceFolder}/dpp_app/src/main.py"
+      ],
+      "cwd": "${workspaceFolder}/dpp_app",
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "mainPyFile",
+      "type": "promptString",
+      "description": "Enter the name of your Streamlit main Python file (e.g. main.py)"
+    }
+  ]
+}

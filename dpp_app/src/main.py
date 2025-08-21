@@ -25,11 +25,12 @@ else:
     global_state['pages_loaded'] = False
 
 #https://your_app.streamlit.app/?first_key=1&second_key=two&third_key=true
-#http://172.25.113.104:8501/?Product_ID=2
+#http://172.25.113.64:8501/?Company=Brighteco&Product_ID=1
 
 if 'Product_ID' in st.query_params and not('request' in st.session_state.keys()):    
     st.session_state['request'] = False       
     product_id = st.query_params['Product_ID']
+    global_state['company'] = st.query_params.get('Company', 'Brighteco')
     fd = lib.communication()
     fd.fetch_data(product_id)
 

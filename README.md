@@ -1,234 +1,250 @@
-# Digital Product Passport (DPP) Application
-_**Welcome to the Digital Product Passport (DPP) application. This document provides a complete overview of the components of the application, user guides, and configuration instructions.**_
 
-***
+# Digital Product Passport (DPP) Application
+
+Welcome to the Digital Product Passport (DPP) Application, This prototype has been developed as part of the SmartPass project. This document provides a comprehensive overview of the prototype, installation instructions, user and developer guides, and configuration details.
+
 
 &nbsp;
 
-##  Table of Contents
 
-<!-- vscode-markdown-toc -->
-* 1. [ Add Your Files](#AddYourFiles)
-* 2. [ Installation and Run Web Application](#InstallationandRunWebApplication)
-	* 2.1. [ Install Docker Desktop](#InstallDockerDesktop)
-	* 2.2. [ Clone the Repository](#ClonetheRepository)
-	* 2.3. [ Build Multi-container Docker Application](#BuildMulti-containerDockerApplication)
-	* 2.4. [ Check Logs in Terminal/in Docker Desktop](#CheckLogsinTerminalinDockerDesktop)
-* 3. [ Application Components](#ApplicationComponents)
-	* 3.1. [ DPP_API (Backend)](#DPP_APIBackend)
-	* 3.2. [ DPP_APP (Frontend)](#DPP_APPFrontend)
-* 4. [ User Guide: How to Use the Application](#UserGuide:HowtoUsetheApplication)
-	* 4.1. [ Select a Company](#SelectaCompany)
-	* 4.2. [ Enter Product ID:](#EnterProductID:)
-	* 4.3. [ Navigate Parameters:](#NavigateParameters:)
-	* 4.4. [ Log In for Private Access:](#LogInforPrivateAccess:)
-* 5. [ Feature Guide: Managing Product Updates](#FeatureGuide:ManagingProductUpdates)
-	* 5.1. [ How to Add or Edit an Update](#HowtoAddorEditanUpdate)
-		* 5.1.1. [ Authentication:](#Authentication:)
-		* 5.1.2. [ Add/Edit a Row:](#AddEditaRow:)
-		* 5.1.3. [ Save or Cancel:](#SaveorCancel:)
-	* 5.2. [ Data Handling Concepts](#DataHandlingConcepts)
-		* 5.2.1. [ Write Data in Database:](#WriteDatainDatabase:)
-		* 5.2.2. [ Show All Including Historic Updates:](#ShowAllIncludingHistoricUpdates:)
-* 6. [ Developer Guide: System Configuration](#DeveloperGuide:SystemConfiguration)
-	* 6.1. [ Configuration File](#ConfigurationFile)
-		* 6.1.1. [ Configuration File Structure](#ConfigurationFileStructure)
-	* 6.2. [ Database](#Database)
+
+## Table of Contents
+1. [Quick Start](#quick-start)
+2. [Architecture Overview](#architecture-overview)
+3. [User Guide](#user-guide)
+4. [Feature Guide: Product Updates](#feature-guide-product-updates)
+5. [Developer Guide](#developer-guide)
+6. [Machine Readable Code Verification](#machine-readable-code-verification)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-
-***
 
 &nbsp;
 
-##  1. <a name='AddYourFiles'></a> Add Your Files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Quick Start
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.git
-git branch -M main
-git push -uf origin main
-```
-***
 
-&nbsp;
+### 1. Install Docker Desktop
+- Download and install Docker Desktop for your operating system:
+	- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+	- [Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
+	- [Linux](https://docs.docker.com/desktop/setup/install/linux/)
+- Log in to Docker Desktop after installation.
 
-##  2. <a name='InstallationandRunWebApplication'></a> Installation and Run Web Application
 
-###  2.1. <a name='InstallDockerDesktop'></a> Install Docker Desktop
-
-- Download Docker Desktop as per your system configuration given below: 
-
-    - For [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
-    - For [Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
-    - For [Linux](https://docs.docker.com/desktop/setup/install/linux/)
-
-- Install and login Docker Desktop in your system.
-
-###  2.2. <a name='ClonetheRepository'></a> Clone the Repository
+### 2. Clone the Repository
 ```bash
 git clone https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.git
 cd dpp_smartpass
 ```
 
-###  2.3. <a name='BuildMulti-containerDockerApplication'></a> Build Multi-container Docker Application
 
-- Build Multi-container docker application with the help of docker-compose.yml
-    ```bash
-    docker compose up
-    ```
-- Check if the docker container is running or not.
-    ```bash
-    docker ps
-    ```
-- If you want to stop the conainer.
-    ```bash
-    docker compose down
-    ```
+### 3. Build and Run the Application
+- Before running the application, it is needed to export HOST_IP in the terminal
+	- For Linux/macOS:
+		```bash
+			export HOST_IP=$(hostname -I | awk '{print $1}')
+		```
+	- For Windows (PowerShell):
+		```bash
+			$env:HOST_IP = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias (Get-NetConnectionProfile).InterfaceAlias).IPAddress
+		```
+- Run the multi-container application using Docker Compose:
+	```bash
+	docker compose up
+	```
+- Verify containers are running:
+	```bash
+	docker ps
+	```
+- To stop the containers:
+	```bash
+	docker compose down
+	```
 
-###  2.4. <a name='CheckLogsinTerminalinDockerDesktop'></a> Check Logs in Terminal/in Docker Desktop
 
-- Open frontend address in browser: http://localhost:8501/
+### 4. Access the Web Application
+- Open your browser and navigate to: [http://localhost:8501/](http://localhost:8501/)
+
+
+&nbsp;
+
+## Architecture Overview
+
+The DPP Application consists of two main components:
+
+
+### DPP_API (Backend)
+- Provides company data storage and the API for data exchange with the frontend.
+- Built with Python and Flask.
+
+### DPP_APP (Frontend)
+- User-facing web application for viewing and updating Digital Product Passport parameters.
+- Built with Python and Streamlit.
+
+
+> **Note:** This project is a prototype designed to provide an overview of how to implement a DPP Application. Further development is required for a complete DPP implementation. The following table provides a summary of this.
+
+
+
+| Part     | Kind         | Description/Functionality                                                                 | Included in Prototype                                                                                 | Further Development Needed |
+|:---------|:-------------|:----------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------------------|
+| DPP_API  | Feature      | [Access](#4-access-the-web-application): Local network access for demonstration.          | Runs locally for prototype demonstration.                                                            | Needs deployment to a public server or cloud service. |
+|          |              | Data: Static and dynamic parameters relevant to the company.                            | Only key parameters are included.                                                                   | Add all parameters defined in SmartPass. |
+|          |              | [Data Storage](#database): Data stored in local CSV files, not connected to company DB.  | Dummy database, CSV files only.                                                                     | Develop infrastructure for real-time digital data access (databases, document extraction, sensors, etc.). |
+|          |              | Data Formats: Supports numeric, text, and file data.                                    | Supported.                                                                                          | |
+|          |              | [Data Standardization](#developer-guide): Uses [Schema](https://schema.org), [XSD](http://www.w3.org/2001/XMLSchema#), and [GS1](https://gs1.org/voc/) standards.          | Standards applied in prototype.                                                                     | All contributors must follow the same standards. |
+|          |              | Back-up: Data backup not included.                                                      | Not included.                                                                                       | Company must implement backup solutions. |
+|          |              | Other Company Data Sources: Not included.                                               | Not included.                                                                                       | Add support for more stakeholders and data sources. Use [GS1 DigitalLink Resolver](https://github.com/gs1/GS1_DigitalLink_Resolver_CE) for integration. |
+|          | Functionality | Database Connection: Reads CSV files.                                                    | CSV reading implemented.                                                                            | Develop interface for real company data sources. |
+|          |              | Data Standardization: Converts raw data to model definitions using Schema, XSD, and GS1.     | Example transformation included.                                                                    | Define and implement missing parameters. See [how to do it](#developer-guide). |
+|          |              | Endpoints: Public/private data via HTTP GET, dynamic data via HTTP POST.                 | Example endpoints provided.                                                                         | Add all parameters, improve security, and connect to real databases. |
+| DPP_APP  | Feature      | [Access](#4-access-the-web-application): Local network access for demonstration.          | Runs locally for prototype demonstration.                                                            | Needs deployment to a public server or cloud service. |
+|          |              | [Machine Readable Code](#machine-readable-code-verification): Embedded using standards.  | Machine readable code embedded using Schema, XSD, GS1.                                              | Define and implement missing parameters. See [how to do it](#developer-guide). |
+|          | Functionality | [DPP Request](#2-enter-product-id): Enter product ID or scan QR code.                    | Product ID entry and QR code supported.                                                             | Use [QR code generator](./dpp_api/qr/qrCode.py) for more products. |
+|          |              | [DPP Visualization](#3-navigate-parameters): View parameters as text or tables.          | Text and table views supported.                                                                     | Add more visualization types as needed. |
+|          |              | [DPP Update](#feature-guide-product-updates): Create or update dynamic parameters.       | Supported.                                                                                          | |
+|          |              | DPP Creation/End of Life: No interface for creation or deletion.                        | Not supported in prototype.                                                                        | Stakeholders must manage creation/deletion. See [how to do it](#developer-guide). |
+|          |              | [Visualization Authentication](#4-log-in-for-private-access): User login, public/private roles. | Two roles: public (view) and private (edit/update).                                                 | Add more roles, improve security (token, data wallet, bankid, etc.). Modify roles/passwords in [credentials file](./dpp_app/src/credentials.yml). |
+|          |              | [Update Authentication](#a-authentication): Dummy roles for update authentication.       | Dummy roles provided for updates.                                                                   | Define proper roles and improve authentication. Modify roles/passwords in [credentials file](./dpp_app/src/credentials.yml). |
 
 ***
 
 &nbsp;
 
-##  3. <a name='ApplicationComponents'></a> Application Components
 
-The application consists of two main parts: a backend API and a frontend Web Application.
+## User Guide
 
-###  3.1. <a name='DPP_APIBackend'></a> DPP_API (Backend)
-* **Description**: This component serves as the company data storage and provides the Application Programming Interface (API). It is responsible for communicating and exchanging data with the `DPP_APP`.
+Follow these steps to view and update product data:
 
-###  3.2. <a name='DPP_APPFrontend'></a> DPP_APP (Frontend)
-* **Description**: This is the user-facing web application where Digital Product Passport parameters can be viewed and updated. All parameters shown in the app are fetched from the `DPP_API`.
-* **Access Modes**: The application has two access levels:
-    * **Public Mode**: Provides a basic view of product parameters.
-    * **Private Mode**: Unlocked by logging in. This mode shows an increased number of parameters and gives users the ability to update them.
 
-***
+### 1. Select a Company
+- Click the button below the company logo to access the DPP Company flow.
+- For testing, scan the QR code for "Product 1" using your phone (ensure both devices are on the same network).
+![Select company](./resources/select%20company.png)
 
-&nbsp;
 
-##  4. <a name='UserGuide:HowtoUsetheApplication'></a> User Guide: How to Use the Application
+### 2. Enter Product ID
+- Enter the product ID you wish to view.
+![Enter product ID](./resources/enter%20product%20ID.png)
 
-This section describes the standard user workflow for viewing product data.
 
-###  4.1. <a name='SelectaCompany'></a> Select a Company
-![Please select the company you want to work with](./resources/select company.png)
-&nbsp;
 
-###  4.2. <a name='EnterProductID:'></a> Enter Product ID:
-* Enter product ID which you want to see.
-![Enter the product ID here](./resources/enter product ID.png)
-&nbsp;
+### 3. Navigate Parameters
+- Browse parameter categories for the selected product. You start in `Public Mode`.
+![Navigate parameters](./resources/navigate%20parameters.png)
 
-###  4.3. <a name='NavigateParameters:'></a> Navigate Parameters:
-* You can now navigate through the different parameter categories for the product as shown in the picture below with red box. You are initially in `Public Mode`.
-![Navigate parameters](./resources/navigate parameters.png)
-&nbsp;
 
-###  4.4. <a name='LogInforPrivateAccess:'></a> Log In for Private Access:
-* To see more detailed parameters or to make changes, you must log in with your user credentials. This will grant you access to `Private Mode`.
-![User login](./resources/user login.png)
-* Here you can Enter your credentials to get access to `Private Mode`.
-![Enter credentials](./resources/enter credentials.png)
-
-***
+### 4. Log In for Private Access
+- Log in with your credentials to access `Private Mode` and additional features.
+![User login](./resources/user%20login.png)
+![Enter credentials](./resources/enter%20credentials.png)
 
 &nbsp;
 
-##  5. <a name='FeatureGuide:ManagingProductUpdates'></a> Feature Guide: Managing Product Updates
+## Feature Guide: Product Updates
 
-This feature allows authorized users to manage product updates in `Private Mode`. In `Public Mode`, you can only view existing updates.
-
-###  5.1. <a name='HowtoAddorEditanUpdate'></a> How to Add or Edit an Update
-
-Navigate to Product Updates `(9. Product Updates)`.
-
-####  5.1.1. <a name='Authentication:'></a> Authentication:
-* Ensure you are logged in to the application to enable `Private Mode`.
-* To add or edit an update click <kbd> <br> Add/Edit update <br> </kbd> which opens pop-up for user authentication.
-![Products updates](./resources/products update.png)
-![Edit authentication](./resources/edit authentication.png)
-####  5.1.2. <a name='AddEditaRow:'></a> Add/Edit a Row:
-* Click <kbd> <br> Add row <br> </kbd> to create a new update entry.
-* > **Note on Non-Modifiable Fields**: For data integrity, some fields are set automatically and cannot be edited such as: `Product ID`, `Update ID`, and `Timestamp`
-* > **Special Case (Brighteco)**: For Brighteco products, `Actual total weight` parameter must be the sum of `Virgin material weight` + `Recycled content`.
-####  5.1.3. <a name='SaveorCancel:'></a> Save or Cancel:
-* Click <kbd> <br> Save </br> </kbd> to save your changes to the local database.
-* Click <kbd> <br > Cancel </br> </kbd> to discard your changes.
-
-![Edit, Save, Cancel](./resources/edit save cancel.png)
-
-###  5.2. <a name='DataHandlingConcepts'></a> Data Handling Concepts
-
-####  5.2.1. <a name='WriteDatainDatabase:'></a> Write Data in Database:
-* **Local Changes vs. Actual Changes**: Edits you make in the app are "local changes" and saved to the local database only. They are only written to the actual database and made permanent when you click <kbd> <br> Write data in database </br> </kbd>.
-![data writing in database](./resources/data writing.png)
-
-####  5.2.2. <a name='ShowAllIncludingHistoricUpdates:'></a> Show All Including Historic Updates:    
-* **Update History**: The system is designed to preserve a complete history. An update never overwrites previous data; instead, it creates a new entry, ensuring all historical records are kept. They can be view by marking:
-    - [x] **Show all including historic updates**.
-![data history](./resources/data history.png)
-
-***
-
-&nbsp;
-
-##  6. <a name='DeveloperGuide:SystemConfiguration'></a> Developer Guide: System Configuration
-
-This section explains how to modify and extend the DPP application's parameters and web application layout using `configuration file`.
-
-* **To Modify an Existing Parameter Name/Category**: You will need to edit the appropriate fields in the configuration file to change how they appear in the `DPP_APP` layout.
-* **To Add a New Parameter**: Adding a new parameter value requires updating the configuration file and the database _(e.g., You want to add a new parameter, you need to add a raw in `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]` and a column in `[dpp_api/data/ + "company_name" + /static.csv]` if the new parameter is static or else in `[dpp_api/data/ + "company_name" + /dynamic.csv]`)_.
-
-###  6.1. <a name='ConfigurationFile'></a> Configuration File
-
-* **Purpose**: The `configuration file` controls the display names, categories, and layout of parameters within the `DPP_APP`.
-* **Location**: You can find the `configuration file` at `[dpp_api/data/ + "company_name" + /parameter_metadata_"company_name".xlsx]`.
+Authorized users can manage product updates in `Private Mode`. In `Public Mode`, updates are view-only.
 
 
-####  6.1.1. <a name='ConfigurationFileStructure'></a> Configuration File Structure
+### 1. Add or Edit an Update
+- Navigate to Product Updates.
 
-* The configuration file contains several sheets, each controlling a different aspect of the application.
 
-* `parameter_metadata` Sheet
-	* `category`
-	* `sub_category`
-	* `parameter`
-	* `order_parameter`
-	* `subparameter`
-	* `access` (e.g., public/private)
-	* `type` (e.g., string, number)
-	* `data model definition string` (Includes documentation about GS1 and Schema)
+#### a. Authentication
+- Remember to login first to enable `Private Mode`, click **Add/Edit update** to authenticate.
+![Products updates](./resources/products%20update.png)
+![Edit authentication](./resources/edit%20authentication.png)
 
-* `category_metadata` Sheet
-	* `category`
-	* `function_name`
-	* `icon_category`: Uses [Google Material Symbols icons](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Rounded). The name should be lower case with spaces replaced by underscores (e.g., `info_icon`).
 
-* `sub_category_metadata` Sheet
-	* `sub_category`
-	* `conf_print`
+#### b. Add/Edit a Row
+- Click **Add row** to create a new update entry.
+- **Note:** Some fields (Product ID, Update ID, Timestamp) are set automatically and cannot be edited.
+- **Brighteco Special Case:** For Brighteco products, `Actual total weight` = `Virgin material weight` + `Recycled content`.
 
-***
+
+#### c. Save or Cancel
+- Click **Save** to commit changes to the local database.
+- Click **Cancel** to discard changes.
+![Edit, Save, Cancel](./resources/edit%20save%20cancel.png)
+
+
+### 2. Data Handling
+
+#### a. Write Data in Database
+- Changes are saved locally until you click **Write data in database** to make them permanent.
+![Data writing](./resources/data%20writing.png)
+
+#### b. Show Historic Updates
+- All updates are preserved; previous data is never overwritten. View history by enabling **Show all including historic updates**.
+![Data history](./resources/data%20history.png)
 
 &nbsp;
 
-###  6.2. <a name='Database'></a> Database
+## Developer Guide
 
-* **Purpose**: This is a basic representation of the company database. It contains the data itself.
-* **Location**: The databases are saved as two different types.
-    1. dynamic
-    2. static
+Instructions for modifying parameters, layout, and database structure.
 
-    They are located at `[dpp_api/data/ + "company_name" + /dynamic.csv]` and `[dpp_api/data/ + "company_name" + /static.csv]`.
+
+- **Modify Parameter Name/Category:** Edit the relevant fields in the `configuration file` to change display names or categories in the DPP_APP layout.
+- **Add a New Parameter:** Update both the configuration file and the database:
+	- Add a row in `dpp_app/data/<company_name>/parameter_metadata_<company_name>.xlsx`.
+	- Copy/Paste this file (`parameter_metadata_<company_name>.xlsx`) in `dpp_api/data/<company_name>`.
+	- Add a column in `dpp_api/data/<company_name>/static.csv` (for static parameters) or `dynamic.csv` (for dynamic parameters).
+- **Create DPP for New Product:** Add a new row in both `static.csv` and `dynamic.csv` for the product.
+
+
+### Configuration File
+- **Purpose:** Controls display names, categories, and layout of parameters in DPP_APP.
+- **Location:** `dpp_app/data/<company_name>/parameter_metadata_<company_name>.xlsx`
+
+
+
+a. Configuration File Structure
+
+The configuration file consists of several sheets, each responsible for a specific aspect of the DPP_APP configuration:
+
+* `parameter_metadata`: Defines the layout and organization of parameters in the DPP_APP.
+	* `category`: The main topics shown in the [side navigation bar](#3-navigate-parameters).
+	* `sub_category`: Allows grouping parameters within a category. For example, under `6. Circularity and resource efficiency`, subcategories include `Recycled content`, `Circularity and resource efficiency`, and `Durability`.
+	  ![sub_categories](./resources/sub_categories.png)
+	* `parameter`: The individual DPP parameters.
+	* `order_parameter`: Specifies the display order of parameters on the main page.
+	* `subparameter`: Breaks down a parameter into more detailed components, e.g., splitting "Manufacturing place" into "City" and "Address".
+	* `access`: Indicates whether a parameter is public or private.
+	* `data model definition string`: Contains the data model definition for each parameter. For guidance on constructing these definitions using GS1, Schema, and XSD vocabularies, refer to this <a href="https://www.gs1.org/docs/gs1-smartsearch/GS1_GTIN_OTW_Implementation_Guideline.pdf">document</a>.
+* `parameter_metadata_original`: Reference sheet containing the original parameters from the SmartPass project. It is a copy of <a href="https://chalmersindustriteknik.sharepoint.com/:x:/r/sites/235035SmartPass/Delade%20dokument/General/Leveranser/Data%20Platform/Data_Parameters.xlsx?d=w7d6d7ab839bc4cf99de6f9b159e893f3&csf=1&web=1&e=HQ5j2f">Data_Parameters.xlsx</a>. This sheet is for reference only and is not used by the DPP_APP.
+* `category_metadata`: Specifies details for each category.
+	* `category`: All categories defined in `parameter_metadata`.
+	* `function_name`: Internal name for each category in DPP_APP. Must use only alphanumeric characters and underscores.
+	* `icon_category`: Icon shown for each category in the [side navigation bar](#3-navigate-parameters). Icons are from [Google Material Symbols](https://fonts.google.com/icons?icon.set=Material+Symbols&icon.style=Rounded), with names in lowercase and spaces replaced by underscores (e.g., `info_icon`).
+* `sub_category_metadata`: Specifies details for each subcategory.
+	* `sub_category`: All subcategories defined in `parameter_metadata`.
+	* `conf_print`: Determines how parameters under a subcategory are displayed: as text (e.g., [General product and manufacturer information](#3-navigate-parameters)) or as a table (e.g., [product updates](#a-authentication)).
+&nbsp;
+
+### Database
+- **Purpose:** Stores company data.
+- **Location:**
+	- Dynamic: `dpp_api/data/<company_name>/dynamic.csv`
+	- Static: `dpp_api/data/<company_name>/static.csv`
+
+
+## Machine Readable Code Verification
+
+Parameters are visualized in the web DPP_APP and also embedded as machine readable code (GS1, Schema, XSD standards).
+
+To verify:
+1. Save the web page from DPP_APP.
+	![Save as web page](./resources/save%20as%20web%20page.png)
+2. Open the saved file in a text editor and copy the content.
+	![Save HTML content](./resources/save%20html%20content.png)
+3. Go to [https://validator.schema.org/](https://validator.schema.org/), paste the code in the Code Snippet tab, and run the test.
+	![Run test](./resources/run%20test.png)
+4. View all parameters as machine readable code on the left side of the validator page.
+	![Machine readable code](./resources/machine%20readable%20code.png)
+
+&nbsp;

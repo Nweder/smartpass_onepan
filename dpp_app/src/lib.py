@@ -1,3 +1,4 @@
+import socket
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -6,10 +7,14 @@ import json
 import os
 import global_state_lib as gsl
 import yaml
+import qrcode
+
 from yaml.loader import SafeLoader
 from datetime import datetime
+from PIL import Image
 
 url = "http://backend:5000/"
+#url = "http://127.0.0.1:5000/"
 #company = 'Micropower'
 #company = 'Brighteco'
 #company = 'PLS'
@@ -293,8 +298,10 @@ class communication:
 
     def send_data(self, product_data):
         global url
+        global url_alt
         body_dynamic = {}
         self.api_send_url = url + "post_dynamic_data"  
+        self.api_send_url_alt = url_alt + "post_dynamic_data"  
         body = self.data_model_definition(product_data, 'Update', 'dynamicParameters_header.txt')
         body_dynamic['dynamic'] = body
         body_str = "{\"company\":\"" + self.global_state['company'] + "\", \"message\":\"" + str(body_dynamic) + "\"}"
@@ -306,6 +313,9 @@ class communication:
             accept_json={'Content-Type': 'application/json', 'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br'}
             ### invoke API and post the response
             response = requests.post(url=self.api_send_url, headers=accept_json , data=body)
+            #response_alt = requests.post(url=self.api_send_url_alt, headers=accept_json , data=body)
+            #if response_alt.status_code == requests.codes.ok:
+            #    response = response_alt
             if response.status_code == requests.codes.ok:                
                 status = "OK"
             else:
@@ -316,6 +326,7 @@ class communication:
     
     def fetch_data(self, product_id):
         global url
+        global url_alt
         self.global_state['product_id'] = product_id  
         if 'Login' in self.global_state.get_key_names() and self.global_state['Login']: #If the user did login, load private data
             access = 'private'
@@ -328,8 +339,10 @@ class communication:
             self.parameter_metadata_df = self.parameter_metadata_df[self.parameter_metadata_df['access'] == 'public']
             self.parameter_metadata_df.reset_index(drop=True, inplace=True)
             self.api_url = url+"req_pub_data"
+            #self.api_url_alt = url_alt+"req_pub_data"
         else:
             self.api_url = url+"req_all_data"
+            #self.api_url_alt = url_alt+"req_all_data"
         product_id_str = "{\"company\":\"" + str(self.global_state['company']) + "\", \"Product_ID\":\"" + str(product_id) + "\"}"
         self.global_state['status'], self.global_state['metadata_data_content_pages'] = self.api_request(product_id_str.encode('ascii'))
 
@@ -375,6 +388,9 @@ class communication:
             accept_json={'Content-Type': 'application/json', 'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br'}
             ### invoke API and get the response
             response = requests.get(url=self.api_url, headers=accept_json , data=body)
+            #response_alt = requests.get(url=self.api_url_alt, headers=accept_json , data=body)
+            #if response.status_code != requests.codes.ok:
+            #    response = response_alt
             if response.status_code == requests.codes.ok:
                 ### Convert data to JSON format
                 data = response.json()
@@ -567,4 +583,66 @@ def create_generic_page_py(page_names):
             f.write(body)
     #with open(os.path.join(os.getcwd(), 'src/generic_page.py'), 'w') as f:
     #    f.write(header)
-    #    f.write(body)             
+    #    f.write(body)      
+
+def get_ip():
+    """
+    Gets the host IP address in a way that works both inside and outside a Docker container.
+    
+    1. It first checks for the 'HOST_IP' environment variable, which is the
+       recommended way to pass the host's IP to a Docker container.
+       
+    2. If the variable is not found (e.g., when running directly in Visual Studio),
+       it falls back to a socket-based method to find the local IP.
+       
+    3. If all else fails, it returns '127.0.0.1'.
+    """
+    # Priority 1: Check for the environment variable (Docker method)
+    host_ip = os.getenv('HOST_IP')
+    if host_ip:
+        return host_ip
+        
+    # Priority 2: Fallback for local execution (Visual Studio method)
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(0)
+        # Doesn't have to be reachable
+        s.connect(('10.254.254.254', 1))
+        local_ip = s.getsockname()[0]
+    except Exception:
+        local_ip = '127.0.0.1' # Final fallback
+    finally:
+        s.close()
+        
+    return local_ip
+
+def create_qr(path_data, file_name_logo, data, qr_name):    
+
+    # Create a QR code object
+    qr = qrcode.QRCode(version=1, box_size=10, border=5)
+   
+    # Add the data to the QR code object
+    qr.add_data(data)
+
+    # Make the QR code
+    qr.make(fit=True)
+
+    # Create an image from the QR code
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Open the logo or image file
+    logo = Image.open(os.path.join(path_data, file_name_logo))
+
+    # Resize the logo or image if needed
+    logo = logo.resize((50, 50))
+
+    # Position the logo or image in the center of the QR code
+    img_w, img_h = img.size
+    logo_w, logo_h = logo.size
+    pos = ((img_w - logo_w) // 2, (img_h - logo_h) // 2)
+
+    # Paste the logo or image onto the QR code
+    img.paste(logo, pos)
+
+    # Save the QR code image with logo or image
+    img.save(os.path.join(path_data,qr_name))       

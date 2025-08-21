@@ -28,7 +28,7 @@ def req_pub_data():
         product_id = int(data['Product_ID'])
         company = str(data['company'])
         path_data = os.path.join('./data/', company)
-        parameter_metadata_file = r'./data/'+company+'/parameter_metadata_'+company+'.xlsx' #THIS IS HARDCODED, I WILL CHANGE IT LATER
+        parameter_metadata_file = r'./data/'+company+'/parameter_metadata_'+company+'.xlsx'
         answer['static'] = get_static_data(product_id)   
         answer['dynamic'] = get_dynamic_data(product_id)
         return jsonify(message=str(answer))
@@ -113,7 +113,7 @@ def req_all_data():
         product_id = int(data['Product_ID'])
         company = str(data['company'])
         path_data = os.path.join('./data/', company)
-        parameter_metadata_file = r'./data/'+company+'/parameter_metadata_'+company+'.xlsx' #THIS IS HARDCODED, I WILL CHANGE IT LATER
+        parameter_metadata_file = r'./data/'+company+'/parameter_metadata_'+company+'.xlsx'
         answer['static'] = get_static_data(product_id, access='public_private')   
         answer['dynamic'] = get_dynamic_data(product_id, access='public_private')
         return jsonify(message=str(answer))
@@ -179,7 +179,7 @@ def post_dynamic_data():
         data = request.get_json(force=True)
         company = str(data['company'])
         path_data = os.path.join('./data/', company)
-        parameter_metadata_file = r'./data/'+company+'/parameter_metadata_'+company+'.xlsx' #THIS IS HARDCODED, I WILL CHANGE IT LATER                
+        parameter_metadata_file = r'./data/'+company+'/parameter_metadata_'+company+'.xlsx'              
         _, data_df = parse_message(data)
         #Update dynamic database
         update_dynamic_database(data_df)

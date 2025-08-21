@@ -4,4 +4,4 @@ __pycache__/
 results/denoise_test/*.tif
 results/*.pt
 .DS_Store
-.vscode/*
+../.vscode/*
