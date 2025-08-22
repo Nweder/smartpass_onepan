@@ -36,6 +36,8 @@ Welcome to the Digital Product Passport (DPP) Application, This prototype has be
 
 
 ### 2. Clone the Repository
+- For MacOs: Open a new Terminal
+- For Windows open PowerShell
 ```bash
 git clone https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.git
 cd dpp_smartpass
@@ -48,7 +50,7 @@ cd dpp_smartpass
 		```bash
 			export HOST_IP=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
 		```
-	- For Windows (PowerShell):
+	- For Windows:
 		```bash
 			$env:HOST_IP = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias (Get-NetConnectionProfile).InterfaceAlias).IPAddress
 		```
