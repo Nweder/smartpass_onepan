@@ -1,12 +1,10 @@
-version: '3.9'
-
 services:
   backend:
     build:
       context: dpp_api/.
     container_name: backend
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - ./dpp_api:/dpp_api
     networks:

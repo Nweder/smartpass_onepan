@@ -44,9 +44,9 @@ cd dpp_smartpass
 
 ### 3. Build and Run the Application
 - Before running the application, it is needed to export HOST_IP in the terminal
-	- For Linux/macOS:
+	- For MacOS:
 		```bash
-			export HOST_IP=$(hostname -I | awk '{print $1}')
+			export HOST_IP=$(ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | head -n 1)
 		```
 	- For Windows (PowerShell):
 		```bash
