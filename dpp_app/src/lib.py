@@ -301,7 +301,7 @@ class communication:
         global url_alt
         body_dynamic = {}
         self.api_send_url = url + "post_dynamic_data"  
-        self.api_send_url_alt = url_alt + "post_dynamic_data"  
+        #self.api_send_url_alt = url_alt + "post_dynamic_data"  
         body = self.data_model_definition(product_data, 'Update', 'dynamicParameters_header.txt')
         body_dynamic['dynamic'] = body
         body_str = "{\"company\":\"" + self.global_state['company'] + "\", \"message\":\"" + str(body_dynamic) + "\"}"
