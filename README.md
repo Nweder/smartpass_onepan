@@ -68,15 +68,11 @@ cd dpp_smartpass
 	docker compose down
 	```
 
-
 ### 4. Access the Web Application
 - Open your browser and navigate to: [http://localhost:8501/](http://localhost:8501/)
 
 
-&nbsp;
-
 ## Architecture Overview
-
 The DPP Application consists of two main components:
 
 
@@ -116,11 +112,8 @@ The DPP Application consists of two main components:
 
 ***
 
-&nbsp;
-
 
 ## User Guide
-
 Follow these steps to view and update product data:
 
 
@@ -135,7 +128,6 @@ Follow these steps to view and update product data:
 ![Enter product ID](./resources/enter%20product%20ID.png)
 
 
-
 ### 3. Navigate Parameters
 - Browse parameter categories for the selected product. You start in `Public Mode`.
 ![Navigate parameters](./resources/navigate%20parameters.png)
@@ -146,10 +138,8 @@ Follow these steps to view and update product data:
 ![User login](./resources/user%20login.png)
 ![Enter credentials](./resources/enter%20credentials.png)
 
-&nbsp;
 
 ## Feature Guide: Product Updates
-
 Authorized users can manage product updates in `Private Mode`. In `Public Mode`, updates are view-only.
 
 
@@ -181,14 +171,13 @@ Authorized users can manage product updates in `Private Mode`. In `Public Mode`,
 - Changes are saved locally until you click **Write data in database** to make them permanent.
 ![Data writing](./resources/data%20writing.png)
 
+
 #### b. Show Historic Updates
 - All updates are preserved; previous data is never overwritten. View history by enabling **Show all including historic updates**.
 ![Data history](./resources/data%20history.png)
 
-&nbsp;
 
 ## Developer Guide
-
 Instructions for modifying parameters, layout, and database structure.
 
 
@@ -203,7 +192,6 @@ Instructions for modifying parameters, layout, and database structure.
 ### Configuration File
 - **Purpose:** Controls display names, categories, and layout of parameters in DPP_APP.
 - **Location:** `dpp_app/data/<company_name>/parameter_metadata_<company_name>.xlsx`
-
 
 
 a. Configuration File Structure
@@ -227,7 +215,7 @@ The configuration file consists of several sheets, each responsible for a specif
 * `sub_category_metadata`: Specifies details for each subcategory.
 	* `sub_category`: All subcategories defined in `parameter_metadata`.
 	* `conf_print`: Determines how parameters under a subcategory are displayed: as text (e.g., [General product and manufacturer information](#3-navigate-parameters)) or as a table (e.g., [product updates](#a-authentication)).
-&nbsp;
+
 
 ### Database
 - **Purpose:** Stores company data.
@@ -237,7 +225,6 @@ The configuration file consists of several sheets, each responsible for a specif
 
 
 ## Machine Readable Code Verification
-
 Parameters are visualized in the web DPP_APP and also embedded as machine readable code (GS1, Schema, XSD standards).
 
 To verify:
@@ -249,5 +236,3 @@ To verify:
 	![Run test](./resources/run%20test.png)
 4. View all parameters as machine readable code on the left side of the validator page.
 	![Machine readable code](./resources/machine%20readable%20code.png)
-
-&nbsp;
