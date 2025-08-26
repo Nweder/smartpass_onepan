@@ -42,6 +42,7 @@ Welcome to the Digital Product Passport (DPP) Application, This prototype has be
 git clone https://gitlab.com/smartpass/fullstack_app/dpp_smartpass.git
 cd dpp_smartpass
 ```
+> **Note:** If you have not installed git follow the instructions in [https://docs.gitlab.com/topics/git/how_to_install_git/](https://docs.gitlab.com/topics/git/how_to_install_git/)
 
 
 ### 3. Build and Run the Application
