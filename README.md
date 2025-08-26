@@ -229,10 +229,10 @@ Parameters are visualized in the web DPP_APP and also embedded as machine readab
 
 To verify:
 #### 1. Save the web page from DPP_APP.
-	![Save as web page](./resources/save%20as%20web%20page.png)
+![Save as web page](./resources/save%20as%20web%20page.png)
 #### 2. Open the saved file in a text editor and copy the content.
-	![Save HTML content](./resources/save%20html%20content.png)
+![Save HTML content](./resources/save%20html%20content.png)
 #### 3. Go to [https://validator.schema.org/](https://validator.schema.org/), paste the code in the Code Snippet tab, and run the test.
-	![Run test](./resources/run%20test.png)
+![Run test](./resources/run%20test.png)
 #### 4. View all parameters as machine readable code on the left side of the validator page.
-	![Machine readable code](./resources/machine%20readable%20code.png)
+![Machine readable code](./resources/machine%20readable%20code.png)
