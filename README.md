@@ -110,6 +110,7 @@ The DPP Application consists of two main components:
 |          |              | [Visualization Authentication](#4-log-in-for-private-access): User login, public/private roles. | Two roles: public (view) and private (edit/update).                                                 | Add more roles, improve security (token, data wallet, bankid, etc.). Modify roles/passwords in [credentials file](./dpp_app/src/credentials.yml). |
 |          |              | [Update Authentication](#a-authentication): Dummy roles for update authentication.       | Dummy roles provided for updates.                                                                   | Define proper roles and improve authentication. Modify roles/passwords in [credentials file](./dpp_app/src/credentials.yml). |
 
+**Note on GS1:** In addition to the GS1 standard, the [CX-0003 SAMM Aspect Meta Model](https://catenax-ev.github.io/docs/next/standards/CX-0003-SAMMSemanticAspectMetaModel) was also considered. CX-0003 is developed within the Catena-X ecosystem, and Catena-X focuses on connecting companies, solution providers, and service partners across the automotive value chain. Both GS1 and CX-0003 aim to ensure consistent data exchange and interoperability between systems. However, this project chose GS1 because it has a neutral, cross-industry focus, while CX-0003 is tailored to the automotive sector. GS1 therefore offers greater flexibility for defining Digital Product Passport (DPP) parameters across different domains.
 ***
 
 
