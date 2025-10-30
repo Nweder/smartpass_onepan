@@ -1,3 +1,0 @@
-Product ID,Update ID,DPP Update Timestamp,DPP Update Reason,DPP Update Responsible,Battery status,Original weight,Remaining power capability,State of Charge (SOC),"Remaining capacity (kWh) (useable, available)",Current Internal resistance (pack),Internal resistance increase (pack),Current number of (full) charging and discharging cycles,Expected remaining battery lifetime expressed in cycles,Negative events,Service  log,Historic
-1,1.1,2025-05-08 14:44:07,-,Micropower,Original,0.0,25.0,50.0,0.0,0.003,0.001,300.0,9700.0,No event,Replace fuse 2024-09-01,0.0
-1,1.1,2025-05-08 14:44:54,reparation 1,workshop1,Low,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-,-,0.0
