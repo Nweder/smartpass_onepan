@@ -10,6 +10,7 @@ global_state['company'] = 'ONEPan'
 
 # always show product ID and user login pages in the sidebar
 pages = []
+pages.append(st.Page("web_pages/home.py", title="Home", icon=":material/home:"))
 
 # get the name of the logo image - ONEPan
 # list files in the directory

@@ -561,7 +561,7 @@ def create_generic_page_py(page_names):
     #Delete all page files in the folder pages
     if os.path.exists(os.path.join(os.getcwd(), 'src/web_pages')):        
         for file in os.listdir(os.path.join(os.getcwd(), 'src/web_pages')):
-            if file!='product_id.py' and file!='user_login.py' and file!='select_company.py' and file!='__init__.py':
+            if file!='product_id.py' and file!='user_login.py' and file!='select_company.py' and file!='__init__.py' and file!='home.py':
                 os.remove(os.path.join(os.getcwd(), 'src/web_pages/'+file))            
     #Create page files
     for page in page_names:
