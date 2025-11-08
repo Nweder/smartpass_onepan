@@ -15,10 +15,7 @@ from PIL import Image
 
 url = "http://backend:5000/"
 #url = "http://127.0.0.1:5000/"
-#company = 'Micropower'
-#company = 'Brighteco'
-#company = 'PLS'
-#company = 'ONEPan'
+company = 'ONEPan'
 
 units_file = 'data/units.xlsx'
 units_dict = {}
@@ -59,10 +56,6 @@ def user_edit_authentication(global_state):
         cancel = st.button('Cancel') 
     st.markdown(':blue[You can test with the DPP Update Responsible] :' )
     st.markdown(':blue[ONEPan]')
-    st.markdown(':blue[Brighteco]')
-    st.markdown(':blue[Micropower]')
-    st.markdown(':blue[PLS]')
-    st.markdown(':blue[workshop1]')
     st.markdown(':blue[Password for all is abc]')
     st.markdown(':blue[(Watch out with lower and uppercase)]')    
 
@@ -160,8 +153,6 @@ def edit_update(values, header, global_state, formats, show_historic_updates=Fal
         if add_row_button:
             add_row(global_state, formats[header])
         disabled_columns = ['Product ID', 'DPP Update Responsible','Update ID', 'DPP Update Timestamp', 'Historic']
-        if global_state['company'] == 'Brighteco':
-            disabled_columns.append('Actual total weight') 
         tmp_df = st.data_editor(global_state['df_update'], disabled=disabled_columns)
         col1, col2 = st.columns([1,10])
         with col1:
@@ -195,8 +186,6 @@ def edit_update(values, header, global_state, formats, show_historic_updates=Fal
             global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header] = global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header].loc[filter]            
             #Append the new rows
             global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header] = pd.concat([global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header], global_state['df_update']], ignore_index=True) 
-            if global_state['company'] == 'Brighteco':
-                global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header]['Actual total weight'] = global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header]['Virgin material weight'] + global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header]['Recycled content']
             #This line is not necesary if the product_id is a string
             global_state['metadata_data_content_pages'][global_state['current_page_name']]['values'][header]['Product ID'] = global_state['product_id']
             global_state['df_update'] = None
@@ -572,7 +561,7 @@ def create_generic_page_py(page_names):
     #Delete all page files in the folder pages
     if os.path.exists(os.path.join(os.getcwd(), 'src/web_pages')):        
         for file in os.listdir(os.path.join(os.getcwd(), 'src/web_pages')):
-            if file!='product_id.py' and file!='user_login.py' and file!='select_company.py' and file!='__init__.py':
+            if file!='product_id.py' and file!='user_login.py' and file!='select_company.py' and file!='__init__.py' and file!='home.py':
                 os.remove(os.path.join(os.getcwd(), 'src/web_pages/'+file))            
     #Create page files
     for page in page_names:
