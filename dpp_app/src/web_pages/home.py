@@ -4,39 +4,36 @@ import os
 # ----- GLOBAL CSS -----
 st.markdown("""
 <style>
-
-    /* Odsazení hlavního kontejneru */
+    /* Background video container */
     .main .block-container {
         padding-top: 5vh !important;
         padding-bottom: 5vh !important;
     }
 
-    /* Centrování obsahu */
+    /* Center content vertically and horizontally */
     [data-testid="stVerticalBlock"] {
         align-items: center;
         justify-content: center;
         min-height: 80vh;
     }
 
-    /* Titulek */
     h1 {
         text-align: center;
-        color: #4a4a4a;
+        color: #fff;
         font-size: 3.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
     }
 
-    /* Podtitulek */
     p, .stMarkdown {
         text-align: center;
-        color: #6c757d;
+        color: #fff;
         font-size: 1.5rem;
         max-width: 600px;
         margin: 0 auto 2.5rem auto;
     }
 
-    /* FULL-WIDTH BUTTON – HTML varianta místo st.button() */
+    /* Full-width button styles */
     .full-btn {
         width: 100%;
         display: block;

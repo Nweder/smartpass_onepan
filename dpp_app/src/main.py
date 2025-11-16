@@ -8,7 +8,7 @@ st.set_page_config(page_title="Digital Product Passport", page_icon=":material/e
 global_state = gsl.get_global_state()
 global_state['company'] = 'ONEPan'
 
-# --- Session state pro jméno stránky ---
+# Initialize current page in session state
 if "current_page" not in st.session_state:
     st.session_state.current_page = "Home"
 
@@ -24,14 +24,14 @@ if files:
 
 global_state['pages_loaded'] = False
 
-# Zpracování query parametrů
+# If Product_ID is in query params, fetch data automatically (only once)
 if 'Product_ID' in st.query_params and not ('request' in st.session_state.keys()):
     st.session_state['request'] = False
     product_id = st.query_params['Product_ID']
     fd = lib.communication()
     fd.fetch_data(product_id)
 
-# Generování obsahu
+# Dynamically create pages based on metadata if data fetch was successful
 if 'status' in global_state.get_key_names() and global_state['status'] == 'OK':
     function_names = list(
         global_state['metadata_data_content_pages'][category]['function_name']
@@ -67,13 +67,14 @@ global_state["current_page_name"] = current_page
 st.session_state.current_page = current_page
 
 
-# --- 🎥 BACKGROUND VIDEO RENDER — až po navigation ---
+# ----- BACKGROUND VIDEO -----
 is_home = (st.session_state.current_page == "Home")
 video_class = "video-home" if is_home else "video-other"
 
 st.markdown(
     f"""
     <style>
+
     .stApp {{
         background: transparent;
     }}
@@ -111,7 +112,7 @@ st.markdown(
 
     <div id="video-container">
         <video id="background-video" autoplay loop muted playsinline class="{video_class}">
-            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            <source src="https://www.pexels.com/download/video/3768941/" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
