@@ -26,8 +26,10 @@ if "current_page" not in st.session_state:
     st.session_state.current_page = "Home"
 
 # always show product ID and user login pages in the sidebar
+# navigation pages list
 pages = []
 pages.append(st.Page("web_pages/home.py", title="Home", icon=":material/home:"))
+# Add a dedicated page for saved CO2 overview (registration deferred)
 
 # get the name of the logo image - ONEPan
 path_image = os.path.join(os.getcwd(), os.path.join("images", global_state['company']))
@@ -63,6 +65,18 @@ if 'status' in global_state.get_key_names() and global_state['status'] == 'OK':
         )
         i += 1
     global_state['pages_loaded'] = True
+
+# Register saved_co2 page now (after dynamic pages created) if the file exists
+try:
+    saved_co2_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'web_pages', 'saved_co2.py')
+    if os.path.exists(saved_co2_path):
+        pages.append(st.Page("web_pages/saved_co2.py", title="Saved CO₂ & Cucumber Recycling", icon=":material/eco:"))
+    else:
+        # If not present, skip gracefully — user can restart or add the file
+        pass
+except Exception:
+    # Don't let page registration break the app
+    pass
 
 pages.append(st.Page("web_pages/product_id.py", title="Enter Product ID", icon=":material/verified_user:"))
 
