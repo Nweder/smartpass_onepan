@@ -6,7 +6,7 @@ import streamlit as st
 import global_state_lib as gsl
 
 # Do NOT call st.set_page_config() here — main.py sets it once for the app.
-st.title("4. saved CO2")
+st.title("Saved CO2 for product")
 
 global_state = gsl.get_global_state()
 
