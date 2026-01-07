@@ -2,6 +2,19 @@ import streamlit as st
 import os
 import lib
 import global_state_lib as gsl
+import base64
+
+def load_video_base64(relative_path: str) -> str:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    video_path = os.path.join(base_dir, relative_path)
+
+    if not os.path.exists(video_path):
+        return ""
+
+    with open(video_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
+
+video_base64 = load_video_base64("bg_video.mp4")
 
 # global state is always ONEPan
 st.set_page_config(page_title="Digital Product Passport", page_icon=":material/edit:", layout='wide')
@@ -112,7 +125,7 @@ st.markdown(
 
     <div id="video-container">
         <video id="background-video" autoplay loop muted playsinline class="{video_class}">
-            <source src="https://www.pexels.com/download/video/3768941/" type="video/mp4">
+            <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>

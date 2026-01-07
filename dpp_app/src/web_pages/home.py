@@ -47,7 +47,7 @@ st.markdown("""
         padding: 20px 0;
         text-align: center;
 
-        color: #2c3e50 !important;
+        color: #fff !important;
         font-size: 1.5rem;
         font-weight: 600;
 
@@ -78,7 +78,7 @@ st.write("Explore your product's history.")
 # Full-width button (custom HTML)
 st.markdown(
     f"""
-        <a href="/product_id" class="full-btn" target="_self">🔍 Search Product</a>
+        <a href="product_id" class="full-btn" target="_self">🔍 Search Product</a>
     """,
     unsafe_allow_html=True
 )
