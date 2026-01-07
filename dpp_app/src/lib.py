@@ -12,6 +12,7 @@ import qrcode
 from yaml.loader import SafeLoader
 from datetime import datetime
 from PIL import Image
+import time
 
 url = "http://backend:5000/"
 #url = "http://127.0.0.1:5000/"
@@ -217,6 +218,40 @@ def print_data (headers, values, conf_print, formats, header_color=header_color)
                 values[header].reset_index(drop=True, inplace=True) 
                 #Create config for the columns
                 column_config = {}
+                # If the dataframe contains a CO2 saving column, show a prominent metric above the table
+                try:
+                    df_table = values[header]
+                    # Look for likely CO2 saving column names (case-insensitive)
+                    co2_cols = [c for c in df_table.columns if ('co2' in c.lower() and 'save' in c.lower()) or 'co2 saving' in c.lower()]
+                    if not co2_cols:
+                        # fallback: column contains both 'co2' and 'saving' words separately
+                        co2_cols = [c for c in df_table.columns if 'co2' in c.lower() and 'saving' in c.lower()]
+                    if co2_cols:
+                        co2_col = co2_cols[0]
+                        # prefer non-historic rows if Historic column exists
+                        if 'Historic' in df_table.columns:
+                            df_non_hist = df_table[df_table['Historic'] == False]
+                        else:
+                            df_non_hist = df_table
+                        if len(df_non_hist) == 0:
+                            df_non_hist = df_table
+                        # Try to get the last available numeric value
+                        try:
+                            candidate_vals = df_non_hist[co2_col].dropna().values
+                            if len(candidate_vals) > 0:
+                                last_val = candidate_vals[-1]
+                                # convert to float if possible
+                                try:
+                                    val_num = float(last_val)
+                                    # Show metric with two decimals and unit
+                                    st.metric(label="CO₂ saved", value=f"{val_num:,.2f}", delta="kg CO₂-eq")
+                                except Exception:
+                                    # If it's not numeric, just print as-is
+                                    st.markdown(f"#### CO₂ saved: **{last_val}**")
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
                 for i in range(len(values[header].columns)):
                     if formats[header][i] == 'xsd:anyURI' or formats[header][i] == 'gs1:pip' or (formats[header][i] == 'xsd:string' and isinstance(values[header][values[header].columns[i]].values[0], str) and len(values[header][values[header].columns[i]].values[0])>4 and 'http'==values[header][values[header].columns[i]].values[0][0:4]):
                         column_config[values[header].columns[i]] = st.column_config.LinkColumn(values[header].columns[i])
@@ -267,7 +302,21 @@ def print_data (headers, values, conf_print, formats, header_color=header_color)
                 if formats[header][i]=='xsd:anyURI' or formats[header][i]=='gs1:pip' or (formats[header][i] == 'xsd:string' and isinstance(values[header][i], str) and len(values[header][i])>4 and 'http'==values[header][i][0:4]):
                     cols[cc].markdown('''#### ''' + '''[''' + 'More Information' + '''](''' + str(values[header][i]) + ''')''')
                 else:
-                    cols[cc].markdown('''#### ''' + str(values[header][i]))
+                    # Check if this parameter looks like a CO2-saving parameter and print in Swedish
+                    try:
+                        header_name = headers[header][i]
+                        value_to_print = values[header][i]
+                        header_check = header_name.lower()
+                    except Exception:
+                        header_check = ''
+                        value_to_print = values[header][i]
+
+                    # If the parameter name indicates CO2 saving, show a more friendly Swedish message
+                    if 'co2 saving' in header_check or ('co2' in header_check and 'saving' in header_check):
+                        # English phrasing for CO2 saving
+                        cols[cc].markdown('''#### CO2 saved is ''' + str(value_to_print))
+                    else:
+                        cols[cc].markdown('''#### ''' + str(value_to_print))
             if i == int(len(headers[header])/2)-1:
                 cc = 1
         st.markdown("""---""")
@@ -374,13 +423,25 @@ class communication:
  
     def api_request(self, body):
         with st.spinner("Working..."):
-            accept_json={'Content-Type': 'application/json', 'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br'}
-            ### invoke API and get the response
-            response = requests.get(url=self.api_url, headers=accept_json , data=body)
-            #response_alt = requests.get(url=self.api_url_alt, headers=accept_json , data=body)
-            #if response.status_code != requests.codes.ok:
-            #    response = response_alt
-            if response.status_code == requests.codes.ok:
+            accept_json = {'Content-Type': 'application/json', 'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br'}
+            ### invoke API and get the response with retries for transient network/DNS failures
+            max_retries = 5
+            backoff_base = 0.5
+            response = None
+            last_exc = None
+            for attempt in range(max_retries):
+                try:
+                    response = requests.get(url=self.api_url, headers=accept_json, data=body, timeout=5)
+                    break
+                except requests.exceptions.RequestException as e:
+                    # Keep the exception and retry after exponential backoff
+                    last_exc = e
+                    if attempt < max_retries - 1:
+                        time.sleep(backoff_base * (2 ** attempt))
+                        continue
+                    else:
+                        response = None
+            if response is not None and response.status_code == requests.codes.ok:
                 ### Convert data to JSON format
                 data = response.json()
                 ### Now parse the data to dataframes
@@ -392,7 +453,11 @@ class communication:
                 metadata_data_content_pages = self.create_metadata_content_pages()
                 status = "OK"
             else:
-                data = {"code": response.status_code, "message": response.text}
+                # If we have a response but a non-OK status, include response info; otherwise include exception message
+                if response is not None:
+                    data = {"code": response.status_code, "message": response.text}
+                else:
+                    data = {"code": -1, "message": str(last_exc)}
                 metadata_data_content_pages = {}
                 status = "ERROR"
         return status, metadata_data_content_pages
@@ -561,8 +626,10 @@ def create_generic_page_py(page_names):
     #Delete all page files in the folder pages
     if os.path.exists(os.path.join(os.getcwd(), 'src/web_pages')):        
         for file in os.listdir(os.path.join(os.getcwd(), 'src/web_pages')):
-            if file!='product_id.py' and file!='user_login.py' and file!='select_company.py' and file!='__init__.py' and file!='home.py':
-                os.remove(os.path.join(os.getcwd(), 'src/web_pages/'+file))            
+            # Preserve special pages that should not be auto-deleted
+            if file in ('product_id.py', 'user_login.py', 'select_company.py', '__init__.py', 'home.py', 'saved_co2.py'):
+                continue
+            os.remove(os.path.join(os.getcwd(), 'src/web_pages/'+file))            
     #Create page files
     for page in page_names:
         body = ''
